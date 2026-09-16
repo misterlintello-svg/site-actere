@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Équipe — ONG ACT'ERE</title>
+    <meta name="description" content="Découvrez les femmes et les hommes engagés au sein de l'ONG ACT'ERE pour la transition énergétique et l'éco-citoyenneté.">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Montserrat Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .team-hero-banner {
+            padding: 10rem 0 5rem;
+            background: linear-gradient(rgba(10, 28, 17, 0.88), rgba(10, 28, 17, 0.82)), url('hero-bg.jpg') center center / cover no-repeat;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .director-quote-section {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 5rem 0;
+        }
+
+        .director-quote-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .director-portrait {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid #ffffff;
+        }
+
+        .director-portrait img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+
+        .director-message {
+            position: relative;
+        }
+
+        .director-quote-mark {
+            font-size: 5rem;
+            color: var(--primary-green);
+            opacity: 0.25;
+            line-height: 1;
+            font-family: Georgia, serif;
+            position: absolute;
+            top: -2.5rem;
+            left: -1rem;
+        }
+
+        .director-statement {
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .director-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark-forest);
+        }
+
+        .director-role {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        /* Cartes d'équipe enrichies */
+        .team-card-detailed {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .team-card-detailed:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(82, 183, 90, 0.4);
+        }
+
+        .team-card-media {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-card-detailed:hover .team-card-media img {
+            transform: scale(1.05);
+        }
+
+        .team-card-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .team-card-role {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
+        }
+
+        .team-card-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .team-card-bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .team-card-skills {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        .skill-badge {
+            background: var(--light-green-bg);
+            color: var(--primary-green);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-pill);
+        }
+
+        /* Section des Valeurs */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: var(--light-green-bg);
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            transition: var(--transition);
+            border: 1px solid rgba(82, 183, 90, 0.15);
+        }
+
+        .value-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--primary-green);
+            stroke-width: 2;
+            fill: none;
+            transition: var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--primary-green);
+            color: #ffffff;
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(82, 183, 90, 0.25);
+        }
+
+        .value-card:hover .value-icon svg {
+            stroke: #ffffff;
+        }
+
+        .value-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .director-quote-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .director-portrait {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================
+         HEADER / NAVIGATION
+         ========================================================== -->
+    <header class="site-header header-scrolled">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="ONG ACT'ERE">
+                <img src="logo.png" alt="Logo ONG ACT'ERE">
+                <span class="brand-text">ONG ACT’ERE</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="equipe.html" class="active">Equipe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="header-cta">
+                    <a href="contact.html" class="btn btn-primary">
+                        Agir maintenant <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================================
+         HERO BANNER DE LA PAGE EQUIPE
+         ========================================================== -->
+    <section class="team-hero-banner">
+        <div class="container">
+            <span class="section-badge" style="background: rgba(82, 183, 90, 0.2); color: var(--accent-green);">
+                Notre Organisation
+            </span>
+            <h1 style="font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; margin-bottom: 1.2rem;">
+                Les Visages de l'Engagement
+            </h1>
+            <p style="max-width: 700px; margin: 0 auto; color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; line-height: 1.7;">
+                Ingénieurs, écologues, animateurs sociaux et volontaires de terrain unis par la même conviction : bâtir ensemble un avenir vert, juste et durable.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         LE MOT DE LA DIRECTION
+         ========================================================== -->
+    <section class="director-quote-section">
+        <div class="container">
+            <div class="director-quote-grid">
+                <div class="director-portrait">
+                    <img src="prPic.jpeg" alt="Abdoul Somad Messamory - Fondateur">
+                </div>
+                <div class="director-message">
+                    <div class="director-quote-mark">“</div>
+                    <p class="director-statement">
+                        « À l'ONG ACT'ERE, nous croyons qu'une transition écologique réussie ne se décrète pas dans des bureaux climatisés : elle s'enracine au cœur de nos terroirs, avec les villageois, les artisans et les jeunes générations. Notre devoir est de transformer l'énergie solaire et la protection de la nature en opportunités de vie réelles pour tous. »
+                    </p>
+                    <div class="director-name">Abdoul Somad Messamory</div>
+                    <div class="director-role">Directeur Exécutif & Fondateur de l'ONG ACT'ERE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         PRÉSENTATION DÉTAILLÉE DE TOUTE L'ÉQUIPE
+         ========================================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Membres & Pôles</span>
+                <h2 class="section-title">Une Équipe Pluridisciplinaire</h2>
+                <p class="section-description">
+                    Chacun apporte son savoir-faire et sa passion au service de projets environnementaux d'envergure.
+                </p>
+            </div>
+
+            <!-- Grille complète des membres -->
+            <div class="projects-grid" id="full-team-container">
+                <!-- Membre 1 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="prPic.jpeg" alt="Abdoul Somad Messamory">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Direction & Stratégie</span>
+                        <h3 class="team-card-name">Abdoul Somad Messamory</h3>
+                        <p class="team-card-bio">
+                            Ingénieur en énergies renouvelables fort de 12 ans d'expérience. Il supervise les partenariats institutionnels, le plaidoyer énergétique et la stratégie globale d'ACT'ERE.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Énergie Solaire</span>
+                            <span class="skill-badge">Stratégie</span>
+                            <span class="skill-badge">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 2 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="SgPic.jpeg" alt="AIKPON Gbetho Basilid Fidele">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Secrétariat général et Coordination</span>
+                        <h3 class="team-card-name">AIKPON Gbetho Basilid Fidele</h3>
+                        <p class="team-card-bio">
+                            Secrétaire général de l'ONG Act'ère, il coordonne les activités de terrain et assure la liaison entre les équipes techniques, les partenaires et les communautés locales.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Leadership</span>
+                            <span class="skill-badge">Coordination</span>
+                            <span class="skill-badge">Gestion de Projet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 3 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="CompartPic.jpeg" alt="TOURE Maïmouna Nadia">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Partenariat et Sponsoring</span>
+                        <h3 class="team-card-name">TOURE Maïmouna Nadia</h3>
+                        <p class="team-card-bio">
+                            Chargée de la communication et des partenariats, elle développe les relations avec les sponsors, les entreprises et les institutions pour soutenir nos projets de transition énergétique et de reforestation.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Ressources Humaines</span>
+                            <span class="skill-badge">Communication</span>
+                            <span class="skill-badge">Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 4 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="RespoapffPic.jpeg" alt="SORO Gninimegnan Irène">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Action Environnementale</span>
+                        <h3 class="team-card-name">SORO Gninimegnan Irène</h3>
+                        <p class="team-card-bio">
+                            Responsable des actions pour la préservation de la faune et de la flore, elle encadre et coordonne les activités au sein de l'équipe et en dehors.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Pédagogie</span>
+                            <span class="skill-badge">Mobilisation</span>
+                            <span class="skill-badge">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 5 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="Respocothïc.jpeg" alt="HAIDARA Issa">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Commission thématique</span>
+                        <h3 class="team-card-name">HAIDARA Issa</h3>
+                        <p class="team-card-bio">
+                            Responsable de la commission thématique, il est chargé de l'évaluation scientifique des projets, de la mesure de l'impact environnemental et de la mise en place de protocoles écologiques.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Sciences Climat</span>
+                            <span class="skill-badge">Évaluation Carbone</span>
+                            <span class="skill-badge">Écologie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 6 -->
+                <div class="team-card-detailed">
+                    <div class="team-card-media">
+                        <img src="RespocomPic.jpeg" alt="KANGAH Roland Yane Trésor">
+                    </div>
+                    <div class="team-card-info">
+                        <span class="team-card-role">Communication & Relations Extérieures</span>
+                        <h3 class="team-card-name">KANGAH Roland Yane Trésor</h3>
+                        <p class="team-card-bio">
+                            Responsable chargé de la communication et des relations extérieures, il assure la communication et la gestion des relations extérieures de l'ONG.
+                        </p>
+                        <div class="team-card-skills">
+                            <span class="skill-badge">Communication</span>
+                            <span class="skill-badge">Relations Extérieures</span>
+                            <span class="skill-badge">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         NOS VALEURS PARTAGÉES
+         ========================================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Ce Qui Nous Anime</span>
+                <h2 class="section-title">Nos Valeurs Fondatrices</h2>
+                <p class="section-description">
+                    Chacun de nos projets est guidé par une éthique rigoureuse et une transparence totale.
+                </p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h4>Action Concrète</h4>
+                    <p>Nous privilégions toujours l'impact réel et vérifiable sur le terrain aux déclarations sans lendemain.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h4>Proximité Humaine</h4>
+                    <p>Nous co-construisons chaque solution en écoutant d'abord les besoins exprimés par les communautés locales.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                        </svg>
+                    </div>
+                    <h4>Durabilité Écologique</h4>
+                    <p>Tous nos équipements et démarches sont conçus pour durer et régénérer les écosystèmes dans le temps.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                            <path d="M9 18h6"/>
+                            <path d="M10 22h4"/>
+                        </svg>
+                    </div>
+                    <h4>Transmission & Éveil</h4>
+                    <p>Former la jeunesse et lui donner le pouvoir d'agir est la seule garantie d'une préservation pérenne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         REJOINDRE L'ÉQUIPE (APPEL AUX BÉNÉVOLES)
+         ========================================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Envie de faire bouger les lignes <span>avec nous ?</span></h2>
+                <p class="cta-subtitle">
+                    L'ONG ACT'ERE est toujours heureuse d'accueillir des volontaires engagés, des étudiants en quête de sens ou des spécialistes souhaitant apporter leur pierre à l'édifice.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        Devenir bénévole <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        Proposer un partenariat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         FOOTER
+         ========================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <img src="logo.png" alt="Logo ONG ACT'ERE">
+                        <span class="brand-text">ONG ACT’ERE</span>
+                    </div>
+                    <p class="footer-desc">
+                        Organisation non gouvernementale dédiée à la promotion des énergies renouvelables, à la préservation de la nature et à l'éco-citoyenneté active.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Nos actions</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#actions">Énergies renouvelables</a></li>
+                        <li><a href="index.html#actions">Éco-citoyenneté</a></li>
+                        <li><a href="index.html#actions">Protection environnementale</a></li>
+                        <li><a href="index.html#actions">Sensibilisation citoyenne</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact direct</h4>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>ongactere@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+225 07 67 55 71 03</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Bouaké, Côte d'Ivoire</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© ACT’ERE — Tous droits réservés.</div>
+                <div>Agir aujourd'hui pour préserver demain.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Projets — ONG ACT'ERE</title>
+    <meta name="description" content="Découvrez nos 5 projets majeurs sur le terrain : énergies renouvelables, reboisement citoyen et éco-citoyenneté.">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Typographie Montserrat (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- STYLES EXCLUSIFS DE LA PAGE PROJETS (CONFORMES À LA MAQUETTE FOURNIE) --- */
+        body {
+            background-color: #FAFCFA;
+        }
+
+        /* 1. SECTION HERO (HAUT DE PAGE) */
+        .proj-hero-section {
+            padding: 8.5rem 0 4rem;
+            background: #FAFCFA;
+        }
+
+        .proj-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .proj-badge-leaf {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .proj-badge-leaf span.icon {
+            color: var(--primary-green);
+        }
+
+        .proj-hero-title {
+            font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .proj-hero-title span.text-green {
+            color: var(--primary-green);
+        }
+
+        .proj-hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.2rem;
+            max-width: 480px;
+        }
+
+        .proj-hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light-pill {
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.8rem;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .btn-light-pill:hover {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        /* 3 CARTES VERTICALES DU HAUT (SHOWCASE) */
+        .showcase-cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .showcase-card {
+            position: relative;
+            height: 420px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(13, 40, 24, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: #ffffff;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(13, 40, 24, 0.16);
+        }
+
+        .showcase-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 0.6s ease;
+        }
+
+        .showcase-card:hover .showcase-card-bg {
+            transform: scale(1.08);
+        }
+
+        .showcase-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(9, 26, 15, 0.92) 0%, rgba(9, 26, 15, 0.4) 55%, rgba(9, 26, 15, 0.1) 100%);
+            z-index: 2;
+        }
+
+        .showcase-card-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        .showcase-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .showcase-icon-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary-green);
+            stroke-width: 2;
+            fill: none;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-card:hover .showcase-icon-btn {
+            transform: scale(1.1);
+            background: var(--primary-green);
+            color: #ffffff;
+        }
+
+        .showcase-card:hover .showcase-icon-btn svg {
+            stroke: #ffffff;
+        }
+
+        .showcase-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.4rem;
+            color: #ffffff;
+        }
+
+        .showcase-sub {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        /* BANDEAU PARTENAIRES & CONFIANCE */
+        .partners-bar {
+            padding: 2.2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
+            margin-bottom: 4.5rem;
+        }
+
+        .partners-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .partners-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .partners-logos {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .partner-item {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #90A295;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: color 0.25s ease;
+        }
+
+        .partner-item:hover {
+            color: var(--primary-green);
+        }
+
+        /* 2. SECTION INFÉRIEURE : LES 5 PROJETS MAJEURS */
+        .initiatives-section {
+            padding: 2rem 0 6rem;
+        }
+
+        .initiatives-header-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .initiatives-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+
+        /* GRILLE DES 5 PROJETS + BLOC APPEL À L'ACTION / NEWSLETTER */
+        .initiatives-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-vertical-item {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-vertical-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(82, 183, 90, 0.4);
+        }
+
+        .proj-img-box {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 0.85rem;
+        }
+
+        .proj-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-vertical-item:hover .proj-img-box img {
+            transform: scale(1.06);
+        }
+
+        .proj-tag-pill {
+            position: absolute;
+            bottom: 0.85rem;
+            left: 0.85rem;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(6px);
+            color: var(--dark-forest);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .proj-info-box {
+            padding: 0.6rem 1.4rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .proj-item-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--text-main);
+            margin-bottom: 0.6rem;
+        }
+
+        .proj-item-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .proj-item-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .proj-item-link:hover {
+            color: var(--primary-green-hover);
+            gap: 0.65rem;
+        }
+
+        /* 2ÈME RANGÉE : 2 PROJETS RESTANTS + BLOC INSPIRATION (EXACTEMENT COMME LA MAQUETTE) */
+        .bottom-row-layout {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) 1.2fr;
+            gap: 2rem;
+            align-items: stretch;
+            margin-top: 2rem;
+        }
+
+        /* BLOC INSPIRATION / NEWSLETTER VERT CLAIR DU SCREENSHOT */
+        .stay-inspired-card {
+            background: #E8F5E9;
+            border-radius: 24px;
+            padding: 2.2rem;
+            border: 1px solid rgba(82, 183, 90, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stay-inspired-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark-forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .stay-inspired-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 1.5rem;
+        }
+
+        .stay-inspired-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+        }
+
+        .stay-inspired-input {
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            width: 100%;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            background: #ffffff;
+            padding: 0.6rem 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .stay-inspired-input:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(82, 183, 90, 0.15);
+        }
+
+        .stay-inspired-select {
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            width: 100%;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            background: #ffffff;
+            padding: 0.6rem 0.9rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.2s;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230D2818' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.9rem center;
+            padding-right: 2.2rem;
+        }
+
+        .stay-inspired-select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(82, 183, 90, 0.15);
+        }
+
+        .stay-inspired-btn {
+            background: var(--dark-forest);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            letter-spacing: 0.03em;
+        }
+
+        .stay-inspired-btn:hover {
+            background: var(--primary-green);
+        }
+
+        .stay-inspired-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .form-msg {
+            font-size: 0.8rem;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            display: none;
+            font-weight: 600;
+        }
+
+        .form-msg.success {
+            background: rgba(82,183,90,0.15);
+            color: #1a5c1f;
+            display: block;
+        }
+
+        .form-msg.error {
+            background: rgba(220,50,50,0.1);
+            color: #8b1a1a;
+            display: block;
+        }
+
+        .stay-inspired-footer {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-group img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            margin-left: -8px;
+            object-fit: cover;
+        }
+
+        .avatar-group img:first-child {
+            margin-left: 0;
+        }
+
+        .avatar-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .proj-hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .initiatives-grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .bottom-row-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .showcase-cards-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .initiatives-grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================
+         HEADER / NAVIGATION
+         ========================================================== -->
+    <header class="site-header header-scrolled">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="ONG ACT'ERE">
+                <img src="logo.png" alt="Logo ONG ACT'ERE">
+                <span class="brand-text">ONG ACT’ERE</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="projets.html" class="active">Projets</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="header-cta">
+                    <a href="contact.html" class="btn btn-primary">
+                        Agir maintenant <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================================
+         1. SECTION HAUTE : HERO PROJETS & 3 CARTES VERTICALES
+         ========================================================== -->
+    <section class="proj-hero-section">
+        <div class="container">
+            <div class="proj-hero-grid">
+                <!-- Texte de gauche -->
+                <div>
+                    <div class="proj-badge-leaf">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        <span>NOS MISSIONS SUR LE TERRAIN</span>
+                    </div>
+                    <h1 class="proj-hero-title">
+                        Bâtir un Monde plus <span class="text-green">Vert</span>, Propre et Solidaire.
+                    </h1>
+                    <p class="proj-hero-desc">
+                        Par la formation, l'action locale et la sensibilisation, nous donnons aux populations le pouvoir de préserver la nature et d'engager un changement durable.
+                    </p>
+                    <div class="proj-hero-actions">
+                        <a href="#initiatives" class="btn btn-primary">
+                            Explorer les 5 projets <span class="btn-arrow">→</span>
+                        </a>
+                        <a href="equipe.html" class="btn-light-pill">
+                            En savoir plus
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3 Cartes Verticales Showcase de droite (exactement comme le modèle) -->
+                <div class="showcase-cards-wrapper">
+                    <!-- Carte 1 : Action -->
+                    <div class="showcase-card">
+                        <img src="Pub4.jpeg" alt="Action Communautaire" class="showcase-card-bg">
+                        <div class="showcase-card-overlay"></div>
+                        <div class="showcase-card-content">
+                            <div class="showcase-icon-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="4"/>
+                                    <path d="M12 2v2"/>
+                                    <path d="M12 20v2"/>
+                                    <path d="m4.93 4.93 1.41 1.41"/>
+                                    <path d="m17.66 17.66 1.41 1.41"/>
+                                    <path d="M2 12h2"/>
+                                    <path d="M20 12h2"/>
+                                    <path d="m6.34 17.66-1.41 1.41"/>
+                                    <path d="m19.07 4.93-1.41 1.41"/>
+                                </svg>
+                            </div>
+                            <h3 class="showcase-title">Action communautaire</h3>
+                            <p class="showcase-sub">Journée de sensibilisation des ménages sur l'hygiène et la salubrité</p>
+                        </div>
+                    </div>
+
+                    <!-- Carte 2 : Climat & Forêt -->
+                    <div class="showcase-card">
+                        <img src="Pub2.jpeg" alt="Rentrée Solennelle" class="showcase-card-bg">
+                        <div class="showcase-card-overlay"></div>
+                        <div class="showcase-card-content">
+                            <div class="showcase-icon-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                                </svg>
+                            </div>
+                            <h3 class="showcase-title">Rentrée Solennelle</h3>
+                            <p class="showcase-sub">Cérémonie marquant le démarrage des activités</p>
+                        </div>
+                    </div>
+
+                    <!-- Carte 3 : Autonomie Citoyenne -->
+                    <div class="showcase-card">
+                        <img src="Pub5.jpeg" alt="Participation au Gnambélé BootCamp" class="showcase-card-bg">
+                        <div class="showcase-card-overlay"></div>
+                        <div class="showcase-card-content">
+                            <div class="showcase-icon-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <h3 class="showcase-title">Participation au Gnambélé BootCamp</h3>
+                            <p class="showcase-sub">Formation pratique sur les enjeux environnementaux</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         BANDEAU PARTENAIRES & CONFIANCE (Style Trusted by)
+         ========================================================== -->
+    <div class="partners-bar">
+        <div class="container partners-container">
+            <span class="partners-label">Nos sous-thèmes :</span>
+            <div class="partners-logos">
+                <span class="partner-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#52B75A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Énergie & Développement
+                </span>
+                <span class="partner-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    Réchauffement Climatique
+                </span>
+                <span class="partner-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#52B75A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                    Biodiversité et reforestation
+                </span>
+                <span class="partner-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    Préserver nos eaux
+                </span>
+                <span class="partner-item">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; margin-right:4px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    Engagement estudiantin
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         2. SECTION INFÉRIEURE : LES 5 PROJETS MAJEURS D'ACT'ERE
+         ========================================================== -->
+    <section id="initiatives" class="initiatives-section">
+        <div class="container">
+            <div class="initiatives-header-wrap">
+                <div>
+                    <div class="initiatives-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>ACTIONS MENEES</span>
+                    </div>
+                    <h2 style="font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--text-main); line-height: 1.2;">
+                        Nos Activités
+                    </h2>
+                    <p style="color: var(--text-muted); font-size: 1rem; margin-top: 0.5rem; max-width: 600px;">
+                        Des actions et activités menées sur le terrain pour former, se former et sensibiliser.
+                    </p>
+                </div>
+            </div>
+
+            <!-- PREMIÈRE RANGÉE : PROJETS 1, 2, 3 -->
+            <div class="initiatives-grid-layout">
+                <!-- Projet 1 -->
+                <div class="project-vertical-item">
+                    <div class="proj-img-box">
+                        <img src="Pub4.jpeg" alt="Communauté">
+                        <span class="proj-tag-pill">Action communautaire</span>
+                    </div>
+                    <div class="proj-info-box">
+                        <h3 class="proj-item-title">Sensibilisation à l'hygiène et la salubrité</h3>
+                        <p class="proj-item-desc">
+                            Journée de sensibilisation des ménages sur l'hygiène et la salubrité dans les quartiers de Sokoura et Dar-es-Salam
+                        </p>
+                        <button class="proj-item-link" data-project-id="1">
+                            Découvrir le projet <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="project-vertical-item">
+                    <div class="proj-img-box">
+                        <img src="Pub2.jpeg" alt="Cérémonie">
+                        <span class="proj-tag-pill">Rentrée solennelle</span>
+                    </div>
+                    <div class="proj-info-box">
+                        <h3 class="proj-item-title">Démarrage des activités</h3>
+                        <p class="proj-item-desc">
+                            Rentrée solennelle de l'ONG Act'ère
+                        </p>
+                        <button class="proj-item-link" data-project-id="2">
+                            Découvrir le projet <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="project-vertical-item">
+                    <div class="proj-img-box">
+                        <img src="Pub5.jpeg" alt="Formation">
+                        <span class="proj-tag-pill">Participation au Gnambélé BootCamp</span>
+                    </div>
+                    <div class="proj-info-box">
+                        <h3 class="proj-item-title">Formation & Éco-Jeunesse</h3>
+                        <p class="proj-item-desc">
+                            Participation au Gnambélé BootCamp
+                        </p>
+                        <button class="proj-item-link" data-project-id="3">
+                            Découvrir le projet <span>→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEUXIÈME RANGÉE : PROJETS 4 ET 5 + BLOC INSPIRATION NEWSLETTER (COMME SUR L'IMAGE DE RÉFÉRENCE) -->
+            <div class="bottom-row-layout">
+                <!-- Projet 4 -->
+                <div class="project-vertical-item">
+                    <div class="proj-img-box">
+                        <img src="Pub1.jpeg" alt="Encadrement">
+                        <span class="proj-tag-pill">Formation en ligne</span>
+                    </div>
+                    <div class="proj-info-box">
+                        <h3 class="proj-item-title">Meet sur l'éducation à l'environnement et au développement durable</h3>
+                        <p class="proj-item-desc">
+                            Formation en ligne sur l'éducation à l'environnement et au développement durable
+                        </p>
+                        <button class="proj-item-link" data-project-id="4">
+                            Découvrir le projet <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projet 5 -->
+                <div class="project-vertical-item">
+                    <div class="proj-img-box">
+                        <img src="Pub3.jpeg" alt="Réseau et Partenariat">
+                        <span class="proj-tag-pill">Partenariat et Formation</span>
+                    </div>
+                    <div class="proj-info-box">
+                        <h3 class="proj-item-title">Participation au premier sommet sous-régional et ouest-africain</h3>
+                        <p class="proj-item-desc">
+                            Participation au premier sommet sous-régional et ouest-africain sur le climat et l'innovation dans le cadre de la coopération ivoiro-allemande au développement
+                        </p>
+                        <button class="proj-item-link" data-project-id="5">
+                            Découvrir le projet <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BLOC INSPIRATION / FORMULAIRE D'INSCRIPTION (CONNECTÉ À POSTGRESQL) -->
+                <div class="stay-inspired-card">
+                    <div>
+                        <h3 class="stay-inspired-title">Rejoignez Notre Action</h3>
+                        <p class="stay-inspired-desc">
+                            Sponsoring, bénévolat ou partenariat — indiquez votre démarche et inscrivez-vous pour agir avec ACT'ERE.
+                        </p>
+                        <form class="stay-inspired-form" id="inscriptionForm" onsubmit="handleInscription(event)">
+                            <div class="form-row-2">
+                                <input type="text" class="stay-inspired-input" id="inscNom" placeholder="Nom *" required autocomplete="family-name">
+                                <input type="text" class="stay-inspired-input" id="inscPrenom" placeholder="Prénom *" required autocomplete="given-name">
+                            </div>
+                            <input type="email" class="stay-inspired-input" id="inscEmail" placeholder="Adresse Gmail *" required autocomplete="email">
+                            <select class="stay-inspired-select" id="inscMotif" required>
+                                <option value="" disabled selected>Motif d'inscription *</option>
+                                <option value="Sponsoring">Sponsoring</option>
+                                <option value="Benevole">Bénévolat</option>
+                                <option value="Partenariat">Partenariat</option>
+                            </select>
+                            <div class="form-msg" id="inscMsg"></div>
+                            <button type="submit" class="stay-inspired-btn" id="inscBtn">
+                                S'inscrire &rarr;
+                            </button>
+                        </form>
+                    </div>
+                    <div class="stay-inspired-footer">
+                        <div class="avatar-group">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Bénévole 1">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" alt="Bénévole 2">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Bénévole 3">
+                        </div>
+                        <span class="avatar-text">Rejoignez +1 500 citoyens engagés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         CALL TO ACTION : PROPOSER UNE INITIATIVE
+         ========================================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Vous souhaitez porter un projet <span>dans votre région ?</span></h2>
+                <p class="cta-subtitle">
+                    Chefferies, associations locales ou partenaires institutionnels : discutons des besoins de votre communauté pour déployer des solutions écologiques concrètes.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        Proposer un projet <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         FOOTER
+         ========================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <img src="logo.png" alt="Logo ONG ACT'ERE">
+                        <span class="brand-text">ONG ACT’ERE</span>
+                    </div>
+                    <p class="footer-desc">
+                        Organisation non gouvernementale dédiée à la promotion des énergies renouvelables, à la préservation de la nature et à l'éco-citoyenneté active.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="projets.html">Projets</a></li>
+                        <li><a href="equipe.html">Équipe</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Nos actions</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#actions">Énergies renouvelables</a></li>
+                        <li><a href="index.html#actions">Éco-citoyenneté</a></li>
+                        <li><a href="index.html#actions">Protection environnementale</a></li>
+                        <li><a href="index.html#actions">Sensibilisation citoyenne</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact direct</h4>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>ongactere@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+225 07 67 55 71 03</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Bouaké, Côte d'Ivoire</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© ACT’ERE — Tous droits réservés.</div>
+                <div>Agir aujourd'hui pour préserver demain.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================
+         MODAL DE DÉTAIL DU PROJET (INTERACTIF)
+         ========================================================== -->
+    <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Fermer la fenêtre" data-close-modal>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div style="border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; max-height: 320px;">
+                <img id="modal-project-img" src="Pub4.jpeg" alt="Projet" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <span id="modal-project-category" class="section-badge" style="margin-bottom: 0.8rem;">Catégorie</span>
+            <h3 id="modal-project-title" style="font-size: 1.7rem; margin-bottom: 0.6rem; font-weight:800; color:var(--text-main);">Titre</h3>
+            <div style="display:flex; gap:1.8rem; font-size:0.92rem; color:var(--text-muted); margin-bottom:1.4rem; align-items:center;">
+                <div style="display:inline-flex; align-items:center; gap:0.4rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="modal-project-location">Lieu</span>
+                </div>
+                <div>Statut : <strong id="modal-project-status" style="color:var(--primary-green);">Réalisé</strong></div>
+            </div>
+            <p id="modal-project-content" style="color:var(--text-muted); line-height:1.75; margin-bottom:2rem; font-size:1rem;">Contenu détaillé</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary" onclick="window.closeProjectModal && window.closeProjectModal();">
+                    Participer à ce projet <span class="btn-arrow">→</span>
+                </a>
+                <button type="button" class="btn-light-pill btn-close-modal" data-close-modal onclick="window.closeProjectModal && window.closeProjectModal();">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/analytics.js"></script>
+
+    <!-- Script d'inscription vers l'API PostgreSQL -->
+    <script>
+        const API_BASE = (window.location.protocol.startsWith('http'))
+            ? (window.location.port === '5000' || !window.location.port ? window.location.origin : 'http://localhost:5000')
+            : 'http://localhost:5000';
+
+        async function handleInscription(event) {
+            event.preventDefault();
+            const btn = document.getElementById('inscBtn');
+            const msg = document.getElementById('inscMsg');
+            const nom = document.getElementById('inscNom').value.trim();
+            const prenom = document.getElementById('inscPrenom').value.trim();
+            const email = document.getElementById('inscEmail').value.trim();
+            const motif = document.getElementById('inscMotif').value;
+
+            msg.className = 'form-msg';
+            msg.textContent = '';
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours…';
+
+            try {
+                const response = await fetch(`${API_BASE}/api/inscriptions`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nom, prenom, email, motif })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    msg.className = 'form-msg success';
+                    msg.textContent = 'Inscription enregistrée ! Merci de rejoindre ACT\'ERE.';
+                    document.getElementById('inscriptionForm').reset();
+                } else {
+                    msg.className = 'form-msg error';
+                    msg.textContent = data.message || 'Une erreur est survenue.';
+                }
+            } catch (err) {
+                msg.className = 'form-msg error';
+                msg.textContent = 'Serveur inaccessible. Vérifiez que le backend est démarré.';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'S\'inscrire &rarr;';
+            }
+        }
+    </script>
+</body>
+</html>

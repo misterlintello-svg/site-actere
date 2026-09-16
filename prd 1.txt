@@ -1,0 +1,1006 @@
+Oui. Et cette précision est importante : **l’image que nous avons travaillée doit être considérée comme un écran d’introduction / Hero immersif de la page d’accueil, et non comme toute la page d’accueil**.
+
+Voici donc un **PRD complet et directement exploitable dans Antigravity** pour construire le site de l’ONG **ACT’ERE**.
+
+# PRD — Site web ONG ACT’ERE
+
+## 1. Présentation du projet
+
+### Nom du projet
+
+**ONG ACT’ERE**
+
+### Type de site
+
+Site institutionnel moderne pour une ONG engagée dans :
+
+* les énergies renouvelables ;
+* la protection de l’environnement ;
+* l’éco-citoyenneté ;
+* la sensibilisation environnementale ;
+* les actions communautaires ;
+* les projets de développement durable.
+
+### Objectif principal
+
+Créer un site web **moderne, immersif, professionnel et crédible**, permettant à l’ONG de :
+
+1. présenter son identité ;
+2. expliquer ses actions ;
+3. présenter ses projets ;
+4. sensibiliser les visiteurs ;
+5. présenter son équipe ;
+6. permettre aux visiteurs de contacter l’ONG ;
+7. encourager l’engagement et la participation aux actions.
+
+Le site doit donner une impression de **nature, action, engagement et modernité**.
+
+---
+
+# 2. Direction artistique
+
+## Identité visuelle
+
+L'identité visuelle doit reprendre la direction de la maquette fournie.
+
+### Ambiance
+
+**Nature + technologie + engagement citoyen.**
+
+Le site doit éviter l'aspect :
+
+* trop administratif ;
+* trop scolaire ;
+* trop chargé ;
+* trop enfantin.
+
+On recherche plutôt une esthétique de **ONG internationale moderne**.
+
+### Couleurs principales
+
+| Couleur                 | Utilisation                           |
+| ----------------------- | ------------------------------------- |
+| Vert naturel            | Actions, boutons, éléments importants |
+| Vert foncé              | Navigation, fonds, textes             |
+| Blanc                   | Titres et textes sur images           |
+| Noir / vert très sombre | Contrastes                            |
+| Beige très léger        | Sections claires                      |
+
+Le vert doit rappeler :
+
+**forêt → nature → énergie → renouvellement → action.**
+
+---
+
+# 3. Structure générale du site
+
+Le site sera composé de plusieurs grandes sections.
+
+```text
+SITE ACT'ERE
+│
+├── Header
+│
+├── Hero / Introduction
+│
+├── Présentation de l'ONG
+│
+├── Nos domaines d'action
+│
+├── Nos projets
+│
+├── Notre impact
+│
+├── Éco-citoyenneté
+│
+├── Équipe
+│
+├── Actualités / sensibilisation
+│
+├── Appel à l'action
+│
+├── Contact
+│
+└── Footer
+```
+
+---
+
+# 4. Header / Navigation
+
+Le header doit reprendre l'esprit de la maquette actuelle.
+
+### Logo
+
+À gauche :
+
+**ONG ACT’ERE**
+
+Le logo fourni doit être conservé.
+
+### Navigation
+
+À droite :
+
+* Accueil
+* Projets
+* Équipe
+* Contact
+
+### Bouton principal
+
+Ajouter :
+
+**Agir maintenant →**
+
+Ce bouton doit être très visible mais rester élégant.
+
+### Comportement
+
+Le header doit :
+
+* être transparent ou semi-transparent sur le Hero ;
+* devenir légèrement opaque lors du scroll ;
+* rester visible en haut de l'écran ;
+* avoir une transition douce.
+
+Sur mobile :
+
+```text
+Logo                         ☰
+```
+
+Le menu s'ouvre avec une animation fluide.
+
+---
+
+# 5. HERO — Écran d'introduction
+
+## Important
+
+La création que nous avons réalisée correspond **uniquement à cette section**.
+
+Elle ne doit donc pas être considérée comme l'intégralité de l'accueil.
+
+### Objectif
+
+Créer une première impression forte.
+
+Le visiteur doit immédiatement comprendre :
+
+> ACT’ERE agit pour un environnement plus durable.
+
+---
+
+## Image de fond
+
+L'image doit représenter **les énergies renouvelables**.
+
+Exemples :
+
+* panneaux solaires ;
+* éoliennes ;
+* paysage naturel ;
+* lumière solaire ;
+* végétation ;
+* infrastructure énergétique propre.
+
+L'image doit être :
+
+**photorealistic + premium + cinématique + environnementale.**
+
+Éviter les images trop artificielles.
+
+---
+
+## Position du contenu
+
+Contrairement à certaines variantes précédentes :
+
+### Le texte doit rester à gauche.
+
+Structure :
+
+```text
+—  Promouvoir les
+
+ENERGIES
+
+RENOUVELABLES
+
+SENSIBILISER - AGIR - PRESERVER
+
+[ Découvrir nos projets → ]
+```
+
+### Hiérarchie
+
+**Promouvoir les**
+
+petite taille.
+
+**ENERGIES**
+
+très grand.
+
+**RENOUVELABLES**
+
+très grand + vert.
+
+Puis :
+
+**SENSIBILISER - AGIR - PRESERVER**
+
+Enfin :
+
+**Découvrir nos projets →**
+
+---
+
+## Animation
+
+Au chargement :
+
+1. l'image apparaît progressivement ;
+2. le petit texte apparaît ;
+3. "ENERGIES" arrive légèrement par le bas ;
+4. "RENOUVELABLES" apparaît ensuite ;
+5. le slogan apparaît ;
+6. le bouton apparaît en dernier.
+
+Animation courte et élégante.
+
+Pas d'animations excessives.
+
+---
+
+# 6. Transition vers le véritable accueil
+
+Puisque le Hero n'est pas tout l'accueil, le scroll doit naturellement conduire vers la section suivante.
+
+Ajouter en bas :
+
+**Scrollez pour en savoir plus**
+
+avec une petite animation verticale.
+
+---
+
+# 7. Section — Qui sommes-nous ?
+
+Après le Hero.
+
+### Titre
+
+**Agir aujourd’hui pour préserver demain**
+
+### Contenu
+
+Présenter brièvement ACT’ERE :
+
+* qui sommes-nous ?
+* pourquoi l'ONG existe ;
+* quelle est sa mission ;
+* quelles valeurs défend-elle ?
+
+### Composition
+
+Deux colonnes :
+
+**Gauche :**
+
+Texte.
+
+**Droite :**
+
+Grande photographie environnementale.
+
+Possibilité d'utiliser une image représentant :
+
+* communauté ;
+* plantation ;
+* énergie solaire ;
+* sensibilisation ;
+* protection de la nature.
+
+---
+
+# 8. Section — Nos domaines d'action
+
+Titre :
+
+**Nos actions pour un avenir durable**
+
+Présenter les principaux domaines sous forme de cartes.
+
+### Carte 1
+
+**Énergies renouvelables**
+
+Promouvoir l'utilisation de solutions énergétiques propres et accessibles.
+
+### Carte 2
+
+**Éco-citoyenneté**
+
+Encourager les comportements responsables au quotidien.
+
+### Carte 3
+
+**Protection de l'environnement**
+
+Préserver les espaces naturels et les ressources.
+
+### Carte 4
+
+**Sensibilisation**
+
+Informer les communautés sur les enjeux environnementaux.
+
+### Carte 5
+
+**Actions communautaires**
+
+Créer des initiatives utiles aux populations locales.
+
+### Carte 6
+
+**Éducation environnementale**
+
+Former les jeunes et les communautés aux bonnes pratiques.
+
+---
+
+# 9. Section — Nos projets
+
+Cette section doit être particulièrement importante.
+
+### Titre
+
+**Nos projets sur le terrain**
+
+Présenter les projets de l'ONG sous forme de grandes cartes visuelles.
+
+Chaque projet possède :
+
+* une image ;
+* une catégorie ;
+* un titre ;
+* une courte description ;
+* un bouton.
+
+Exemple :
+
+> **ÉNERGIE PROPRE**
+> Installation de solutions solaires pour les communautés.
+
+Bouton :
+
+**Voir le projet →**
+
+---
+
+## Page projet
+
+Chaque projet peut avoir sa propre page.
+
+Structure :
+
+```text
+Image principale
+
+Nom du projet
+
+Présentation
+
+Objectifs
+
+Zone d'intervention
+
+Actions réalisées
+
+Résultats
+
+Galerie photos
+
+Impact
+
+[ Participer / Nous contacter ]
+```
+
+---
+
+# 10. Section — Notre impact
+
+Cette section doit donner de la crédibilité à l'ONG.
+
+Utiliser des **statistiques animées**.
+
+Exemple :
+
+```text
++25
+PROJETS
+
++1 500
+PERSONNES SENSIBILISÉES
+
++10
+COMMUNAUTÉS
+
++8
+ACTIONS ENVIRONNEMENTALES
+```
+
+Les chiffres doivent être facilement modifiables depuis la base de données.
+
+Animation :
+
+```text
+0 → 25
+0 → 1500
+etc.
+```
+
+---
+
+# 11. Section — Éco-citoyenneté
+
+Cette section fait directement référence à ton idée d'image précédente.
+
+### Titre
+
+**Chaque geste compte**
+
+Présenter des gestes simples :
+
+* réduire les déchets ;
+* économiser l'énergie ;
+* préserver l'eau ;
+* planter des arbres ;
+* privilégier les solutions durables ;
+* protéger les espaces naturels.
+
+### Ton
+
+Accessible.
+
+Pas de vocabulaire compliqué.
+
+On peut intégrer quelques petites formulations locales avec modération.
+
+Exemple :
+
+> **On ne va pas seulement parler environnement. On va agir.**
+
+Ou :
+
+> **Petit geste aujourd'hui, grand impact demain.**
+
+Le jargon ivoirien doit rester subtil et professionnel.
+
+---
+
+# 12. Section — Équipe
+
+### Titre
+
+**Une équipe engagée**
+
+Présenter les membres :
+
+* photo ;
+* nom ;
+* fonction ;
+* courte présentation.
+
+Exemple :
+
+```text
+PHOTO
+
+Nom Prénom
+Directeur / Directrice
+
+Une courte description...
+```
+
+Effet au survol :
+
+La carte s'élève légèrement et affiche davantage d'informations.
+
+---
+
+# 13. Section — Actualités
+
+Prévoir une section permettant à l'ONG de publier :
+
+* actualités ;
+* événements ;
+* campagnes ;
+* activités terrain ;
+* conseils environnementaux.
+
+Carte :
+
+```text
+IMAGE
+
+CATÉGORIE
+
+Titre
+
+Date
+
+Courte description
+
+Lire l'article →
+```
+
+---
+
+# 14. Page actualité
+
+Chaque article possède sa propre page.
+
+Structure :
+
+```text
+Image principale
+
+Titre
+
+Date
+
+Auteur
+
+Contenu
+
+Images
+
+Galerie éventuelle
+
+Articles similaires
+```
+
+---
+
+# 15. Call-to-Action principal
+
+Avant le footer, créer une section forte.
+
+### Message
+
+**Et vous, quelle action allez-vous poser ?**
+
+Texte :
+
+> Rejoignez les initiatives d'ACT’ERE et participez à la construction d'un environnement plus durable.
+
+Boutons :
+
+**Agir maintenant**
+
+**Nous contacter**
+
+---
+
+# 16. Page Contact
+
+La page doit être simple.
+
+### Informations
+
+* téléphone ;
+* email ;
+* adresse ;
+* réseaux sociaux.
+
+### Formulaire
+
+```text
+Nom
+Email
+Téléphone
+Sujet
+Message
+
+[ Envoyer le message ]
+```
+
+Message après envoi :
+
+> Merci pour votre message. L'équipe ACT’ERE reviendra vers vous rapidement.
+
+---
+
+# 17. Footer
+
+Le footer doit conserver le même univers graphique que le reste du site.
+
+### Colonne 1
+
+Logo ACT’ERE.
+
+Petite description.
+
+### Colonne 2
+
+**Navigation**
+
+* Accueil
+* Projets
+* Équipe
+* Contact
+
+### Colonne 3
+
+**Nos actions**
+
+* Énergies renouvelables
+* Éco-citoyenneté
+* Protection environnementale
+* Sensibilisation
+
+### Colonne 4
+
+**Contact**
+
+Email
+Téléphone
+Adresse
+
+### Bas du footer
+
+```text
+© ACT’ERE — Tous droits réservés
+```
+
+---
+
+# 18. Animations
+
+Le site doit avoir une sensation moderne, mais **sans transformer le site en manège**.
+
+### Animations recommandées
+
+**Scroll reveal**
+
+Les éléments apparaissent progressivement.
+
+**Parallax léger**
+
+Les images bougent légèrement pendant le scroll.
+
+**Hover**
+
+Les cartes montent légèrement.
+
+**Images**
+
+Zoom très léger au survol.
+
+**Compteurs**
+
+Les statistiques s'animent lorsque la section devient visible.
+
+**Navigation**
+
+Transition fluide entre les sections.
+
+---
+
+# 19. Responsive Design
+
+Le site doit être pensé pour :
+
+### Desktop
+
+1920 × 1080
+1440 × 900
+1366 × 768
+
+### Tablette
+
+1024 × 1366
+768 × 1024
+
+### Mobile
+
+390 × 844
+375 × 812
+360 × 800
+
+Sur mobile :
+
+* menu hamburger ;
+* texte du Hero adapté ;
+* boutons pleine largeur si nécessaire ;
+* cartes empilées ;
+* images optimisées ;
+* aucun élément ne doit dépasser de l'écran.
+
+---
+
+# 20. Performance
+
+Le site doit être rapide.
+
+### Images
+
+Utiliser :
+
+* WebP ;
+* AVIF si possible ;
+* lazy loading.
+
+### Code
+
+Éviter :
+
+* bibliothèques inutiles ;
+* animations lourdes ;
+* vidéos automatiques trop lourdes.
+
+Objectif :
+
+**Lighthouse Performance > 90**
+
+si les conditions de déploiement le permettent.
+
+---
+
+# 21. Base de données
+
+Comme le site est destiné à évoluer, je recommande de **ne pas mettre tous les projets, articles et membres directement dans le HTML**.
+
+La base de données doit gérer au minimum :
+
+### Table `projects`
+
+```text
+id
+title
+slug
+category
+description
+content
+image
+location
+status
+created_at
+```
+
+### Table `team`
+
+```text
+id
+name
+role
+bio
+photo
+social_links
+```
+
+### Table `articles`
+
+```text
+id
+title
+slug
+category
+excerpt
+content
+image
+author
+published_at
+```
+
+### Table `impact`
+
+```text
+id
+label
+value
+description
+```
+
+### Table `contact_messages`
+
+```text
+id
+name
+email
+phone
+subject
+message
+created_at
+status
+```
+
+---
+
+# 22. Administration
+
+Si Antigravity permet de construire l'application complète, prévoir un espace administrateur.
+
+### Dashboard
+
+L'administrateur peut :
+
+* ajouter un projet ;
+* modifier un projet ;
+* supprimer un projet ;
+* ajouter une actualité ;
+* modifier une actualité ;
+* gérer l'équipe ;
+* modifier les statistiques ;
+* consulter les messages reçus.
+
+Cela permettra à l'ONG de faire évoluer le site **sans modifier le code à chaque fois**.
+
+---
+
+# 23. Architecture technique recommandée
+
+Pour une version réellement dynamique :
+
+```text
+Frontend
+│
+├── Pages
+├── Components
+├── Animations
+└── Responsive UI
+       │
+       ↓
+API / Backend
+       │
+       ↓
+Base de données
+```
+
+Pour un projet moderne, on peut partir sur :
+
+```text
+Frontend : React / Next.js
+Backend : API / Server actions
+Database : PostgreSQL
+Images : stockage optimisé
+```
+
+Mais **Antigravity doit choisir une stack simple et stable**, plutôt que d'empiler des technologies juste pour faire moderne.
+
+---
+
+# 24. Arborescence du projet
+
+Je recommande une structure proche de :
+
+```text
+actere/
+│
+├── app/
+│   ├── page
+│   ├── projets/
+│   ├── equipe/
+│   ├── actualites/
+│   └── contact/
+│
+├── components/
+│   ├── Header
+│   ├── Hero
+│   ├── About
+│   ├── Actions
+│   ├── Projects
+│   ├── Impact
+│   ├── EcoCitizenship
+│   ├── Team
+│   ├── News
+│   ├── CTA
+│   └── Footer
+│
+├── public/
+│   ├── images/
+│   └── logo/
+│
+├── database/
+│
+├── styles/
+│
+└── README
+```
+
+---
+
+# 25. Règles importantes pour Antigravity
+
+Voici les consignes que je mettrais **à la fin du prompt de développement** :
+
+> **Ne pas modifier l'identité visuelle fournie.**
+>
+> Le Hero doit conserver la composition validée : image immersive en arrière-plan, navigation en haut, texte principal positionné sur la gauche, grande typographie blanche et verte, bouton d'action vert et indicateur de scroll.
+>
+> Le Hero constitue uniquement la première section de la page d'accueil. Il doit être suivi de plusieurs sections présentant l'ONG, ses actions, ses projets, son impact, l'éco-citoyenneté, son équipe et ses actualités.
+>
+> Conserver une direction artistique naturelle, premium, moderne et institutionnelle.
+>
+> Ne pas utiliser d'emojis dans l'interface.
+>
+> Éviter les termes techniques ou complexes dans les textes destinés aux visiteurs.
+>
+> Utiliser des micro-interactions modernes mais discrètes.
+>
+> Toutes les sections doivent avoir une cohérence visuelle avec le Hero.
+>
+> Le site doit être entièrement responsive.
+>
+> Les projets, articles, membres de l'équipe, statistiques et messages doivent être conçus pour fonctionner avec une base de données.
+>
+> Ne pas créer de fausses fonctionnalités simplement pour donner l'impression qu'elles existent.
+>
+> Le code doit être propre, organisé, maintenable et évolutif.
+>
+> Priorité absolue : **UX, lisibilité, performance et cohérence graphique.**
+
+---
+
+## 26. Vision finale
+
+Le parcours du visiteur doit être :
+
+**IMMERSION**
+
+> Promouvoir les ÉNERGIES RENOUVELABLES
+
+↓
+
+**DÉCOUVERTE**
+
+> Qui est ACT’ERE ?
+
+↓
+
+**ACTION**
+
+> Que faisons-nous ?
+
+↓
+
+**PREUVE**
+
+> Quels sont nos projets ?
+
+↓
+
+**IMPACT**
+
+> Quels résultats obtenons-nous ?
+
+↓
+
+**SENSIBILISATION**
+
+> Comment chacun peut agir ?
+
+↓
+
+**CONFIANCE**
+
+> Qui compose l'équipe ?
+
+↓
+
+**ENGAGEMENT**
+
+> Comment participer ?
+
+↓
+
+**CONTACT**
+
+> Passer à l'action.
+
+C'est cette logique qui permettra de transformer ton visuel Photoshop en **véritable site institutionnel**, plutôt qu'en simple page avec une belle image.
+
+**Et surtout : je conserverais exactement la maquette actuelle du Hero comme référence visuelle maître pour toutes les autres sections.** Le reste du site doit venir prolonger cette identité, pas la remplacer.

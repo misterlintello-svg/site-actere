@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG ACT'ERE — Promouvoir les Énergies Renouvelables</title>
+    <meta name="description" content="Site institutionnel de l'ONG ACT'ERE : Énergies renouvelables, protection de l'environnement, éco-citoyenneté et projets durables.">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Typographie Montserrat (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================================
+         HEADER / NAVIGATION (Fidèle à la maquette image.png)
+         ========================================================== -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo" aria-label="ONG ACT'ERE">
+                <img src="logo.png" alt="Logo ONG ACT'ERE">
+                <span class="brand-text">ONG ACT’ERE</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="header-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        Agir maintenant <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Bouton hamburger mobile -->
+            <button class="mobile-menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================================
+         SECTION 5 : HERO IMMERSIF MULTI-VOLETS (SLIDER)
+         ========================================================== -->
+    <section id="accueil" class="hero-section">
+        <div class="hero-slider">
+            <!-- Volet 1 : Énergies Renouvelables -->
+            <div class="hero-slide active" data-slide="0">
+                <div class="hero-slide-bg" style="background-image: linear-gradient(to right, rgba(10, 28, 17, 0.78) 0%, rgba(10, 28, 17, 0.45) 45%, rgba(10, 28, 17, 0.15) 100%), url('hero-bg.jpg');"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <!-- Texte d'introduction avec tiret -->
+                        <div class="hero-lead-line">
+                            <span class="hero-lead-dash"></span>
+                            <span>Promouvoir les</span>
+                        </div>
+
+                        <!-- Grand titre principal -->
+                        <h1 class="hero-title-main">
+                            <span class="hero-title-white">ENERGIES</span>
+                            <span class="hero-title-green">RENOUVELABLES</span>
+                        </h1>
+
+                        <!-- Slogan sous le titre -->
+                        <p class="hero-subtitle-slogan">
+                            SENSIBILISER - AGIR - PRESERVER
+                        </p>
+
+                        <!-- Bouton d'action principal -->
+                        <a href="projets.html" class="btn btn-primary hero-cta-btn">
+                            Découvrir nos projets <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volet 2 : Préserver la Faune et la Flore (Image 2) -->
+            <div class="hero-slide" data-slide="1">
+                <div class="hero-slide-bg" style="background-image: linear-gradient(to right, rgba(10, 28, 17, 0.78) 0%, rgba(10, 28, 17, 0.45) 45%, rgba(10, 28, 17, 0.15) 100%), url('hero-bg-2.jpg');"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <!-- Texte d'introduction avec tiret -->
+                        <div class="hero-lead-line">
+                            <span class="hero-lead-dash"></span>
+                            <span>Préserver la</span>
+                        </div>
+
+                        <!-- Grand titre principal -->
+                        <h1 class="hero-title-main">
+                            <span class="hero-title-white">FAUNE ET</span>
+                            <span class="hero-title-green">LA FLORE</span>
+                        </h1>
+
+                        <!-- Slogan sous le titre -->
+                        <p class="hero-subtitle-slogan">
+                            SENSIBILISER - AGIR - PRESERVER
+                        </p>
+
+                        <!-- Bouton d'action principal -->
+                        <a href="projets.html" class="btn btn-primary hero-cta-btn">
+                            Découvrir nos actions <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bas du Hero : Scroll Indicator & Pagination Dots -->
+        <div class="hero-footer-bar">
+            <div class="container hero-footer-container">
+                <a href="#apropos" class="scroll-indicator-link" aria-label="Défiler vers le bas">
+                    <div class="scroll-mouse-icon">
+                        <div class="scroll-wheel"></div>
+                    </div>
+                    <span class="scroll-text">Scrollez pour en savoir plus</span>
+                </a>
+
+                <div class="hero-pagination-dots" id="heroPagination" role="tablist" aria-label="Contrôle du diaporama">
+                    <button class="pagination-dash active" data-slide="0" aria-label="Volet 1 : Énergies Renouvelables" title="Énergies Renouvelables"></button>
+                    <button class="pagination-dash" data-slide="1" aria-label="Volet 2 : Faune et Flore" title="Faune et Flore"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 7 : PRÉSENTATION DE L'ONG (Qui sommes-nous ?)
+         ========================================================== -->
+    <section id="apropos" class="section section-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-badge">Qui sommes-nous ?</span>
+                    <h2 class="section-title">Agir aujourd’hui pour préserver demain</h2>
+                    <p class="about-lead">
+                        L’ONG ACT’ERE œuvre pour une transition écologique durable, inclusive et créatrice d'opportunités.
+                    </p>
+                    <p class="about-text">
+                        Née de la volonté de faire converger protection de l’environnement, énergies renouvelables et solidarité communautaire, ACT’ERE déploie des actions concrètes auprès des populations, des écoles et des terroirs.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                                </svg>
+                            </div>
+                            <h4>Énergie Accessible</h4>
+                            <p>Déploiement de solutions solaires autonomes adaptées aux besoins locaux.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                                </svg>
+                            </div>
+                            <h4>Impact Durable</h4>
+                            <p>Restauration des écosystèmes et promotion de l’éco-responsabilité.</p>
+                        </div>
+                    </div>
+
+                    <a href="#actions" class="btn btn-outline-green">
+                        Découvrir nos missions <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+
+                <div class="about-media">
+                    <div class="about-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80" alt="Action communautaire et reboisement">
+                    </div>
+                    <div class="floating-badge">
+                        <div class="floating-badge-number">+3 Ans</div>
+                        <div class="floating-badge-text">D'engagement au service de l'environnement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 8 : NOS DOMAINES D'ACTION
+         ========================================================== -->
+    <section id="actions" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nos Domaines d'Action</span>
+                <h2 class="section-title">Nos actions pour un avenir durable</h2>
+                <p class="section-description">
+                    Une approche holistique articulée autour de 6 piliers majeurs pour répondre aux défis climatiques contemporains.
+                </p>
+            </div>
+
+            <div class="actions-grid">
+                <!-- Carte 1 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2"/>
+                            <path d="M12 20v2"/>
+                            <path d="m4.93 4.93 1.41 1.41"/>
+                            <path d="m17.66 17.66 1.41 1.41"/>
+                            <path d="M2 12h2"/>
+                            <path d="M20 12h2"/>
+                            <path d="m6.34 17.66-1.41 1.41"/>
+                            <path d="m19.07 4.93-1.41 1.41"/>
+                        </svg>
+                    </div>
+                    <h3>Énergies renouvelables</h3>
+                    <p>Promouvoir l'utilisation de solutions énergétiques propres, performantes et accessibles pour tous les foyers.</p>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Éco-citoyenneté</h3>
+                    <p>Encourager les comportements écoresponsables au quotidien et valoriser les initiatives citoyennes positives.</p>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                        </svg>
+                    </div>
+                    <h3>Protection de l'environnement</h3>
+                    <p>Préserver les espaces naturels, revitaliser la biodiversité et protéger les réserves en eau douce.</p>
+                </div>
+
+                <!-- Carte 4 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 11 18-5v12L3 13v-2z"/>
+                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+                            <path d="M21 9a3 3 0 0 1 0 6"/>
+                        </svg>
+                    </div>
+                    <h3>Sensibilisation</h3>
+                    <p>Informer et éclairer les communautés sur les enjeux climatiques et les solutions pratiques existantes.</p>
+                </div>
+
+                <!-- Carte 5 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                            <path d="M2 12h20"/>
+                        </svg>
+                    </div>
+                    <h3>Actions communautaires</h3>
+                    <p>Créer et soutenir des initiatives locales concrètes génératrices d'emplois et de bien-être pour les populations.</p>
+                </div>
+
+                <!-- Carte 6 -->
+                <div class="action-card">
+                    <div class="action-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+                            <path d="M22 10v6"/>
+                            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+                        </svg>
+                    </div>
+                    <h3>Éducation environnementale</h3>
+                    <p>Former les jeunes générations et les collèges aux bonnes pratiques pour forger les éco-citoyens de demain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 9 : NOS PROJETS SUR LE TERRAIN
+         ========================================================== -->
+    <section id="projets" class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Sur Le Terrain</span>
+                <h2 class="section-title">Nos projets sur le terrain</h2>
+                <p class="section-description">
+                    Des réalisations tangibles apportant des solutions énergétiques et écologiques pérennes aux communautés.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Projet 1 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="Pub4.jpeg" alt="Sensibilisation à l'hygiène et la salubrité">
+                        <span class="project-badge-tag">Action communautaire</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Sokoura & Dar-es-Salam, Bouaké</span>
+                        </div>
+                        <h3 class="project-title">Sensibilisation à l'hygiène et la salubrité</h3>
+                        <p class="project-description">
+                            Journée de sensibilisation des ménages sur l'hygiène et la salubrité dans les quartiers de Sokoura et Dar-es-Salam.
+                        </p>
+                        <div class="project-footer">
+                            <button class="project-link" data-project-id="1" style="background:none; border:none; cursor:pointer;">
+                                Voir le projet <span class="btn-arrow">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="Pub2.jpeg" alt="Démarrage des activités - Rentrée solennelle">
+                        <span class="project-badge-tag">Rentrée solennelle</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Bouaké, Côte d'Ivoire</span>
+                        </div>
+                        <h3 class="project-title">Démarrage des activités</h3>
+                        <p class="project-description">
+                            Rentrée solennelle de l'ONG ACT'ERE marquant le lancement officiel des activités sur le terrain.
+                        </p>
+                        <div class="project-footer">
+                            <button class="project-link" data-project-id="2" style="background:none; border:none; cursor:pointer;">
+                                Voir le projet <span class="btn-arrow">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="project-card">
+                    <div class="project-media">
+                        <img src="Pub5.jpeg" alt="Formation & Éco-Jeunesse - Gnambélé BootCamp">
+                        <span class="project-badge-tag">Formation & Éco-Jeunesse</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Côte d'Ivoire</span>
+                        </div>
+                        <h3 class="project-title">Participation au Gnambélé BootCamp</h3>
+                        <p class="project-description">
+                            Formation pratique et immersion de la jeunesse sur les enjeux environnementaux et le leadership écologique.
+                        </p>
+                        <div class="project-footer">
+                            <button class="project-link" data-project-id="3" style="background:none; border:none; cursor:pointer;">
+                                Voir le projet <span class="btn-arrow">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3.5rem;">
+                <a href="projets.html" class="btn btn-outline-green">
+                    Consulter tous nos projets <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 10 : NOTRE IMPACT (Statistiques animées)
+         ========================================================== -->
+    <section class="section section-dark impact-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 3.5rem;">
+                <span class="section-badge">Notre Impact</span>
+                <h2 class="section-title">Des résultats concrets et mesurables</h2>
+                <p class="section-description">
+                    Chaque action posée génère un changement réel et durable sur le terrain.
+                </p>
+            </div>
+
+            <div class="impact-grid">
+                <!-- Stat 1 -->
+                <div class="impact-stat-box">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-prefix">+</span>
+                        <span class="stat-number" data-target="25">0</span>
+                    </div>
+                    <div class="stat-label">Projets</div>
+                    <div class="stat-desc">Déployés avec succès sur le terrain</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="impact-stat-box">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-prefix">+</span>
+                        <span class="stat-number" data-target="1500">0</span>
+                    </div>
+                    <div class="stat-label">Personnes Sensibilisées</div>
+                    <div class="stat-desc">Citoyens, élèves et familles formés</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="impact-stat-box">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-prefix">+</span>
+                        <span class="stat-number" data-target="10">0</span>
+                    </div>
+                    <div class="stat-label">Communautés</div>
+                    <div class="stat-desc">Villages et quartiers partenaires</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="impact-stat-box">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-prefix">+</span>
+                        <span class="stat-number" data-target="8">0</span>
+                    </div>
+                    <div class="stat-label">Actions Majeures</div>
+                    <div class="stat-desc">Campagnes d'envergure nationale</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 11 : ÉCO-CITOYENNETÉ (Chaque geste compte)
+         ========================================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="eco-intro-banner">
+                <p class="eco-quote">
+                    « On ne va pas seulement parler environnement. <span>On va agir.</span> Petit geste aujourd'hui, grand impact demain. »
+                </p>
+            </div>
+
+            <div class="section-header">
+                <span class="section-badge">Éco-citoyenneté</span>
+                <h2 class="section-title">Chaque geste compte</h2>
+                <p class="section-description">
+                    La préservation de notre environnement commence par les réflexes adoptés au quotidien.
+                </p>
+            </div>
+
+            <div class="eco-gestures-grid">
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+                            <path d="M11 19h8.2a1.8 1.8 0 0 0 1.54-.85 1.8 1.8 0 0 0 0-1.78L16.8 9.5"/>
+                            <path d="M13 3.5 8.7 11h6.6L11 3.5"/>
+                            <path d="m3.5 13.5 3.5 3.5-3.5 3.5"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Réduire et trier les déchets</h4>
+                        <p>Éviter les plastiques à usage unique et privilégier les sacs réutilisables et le compostage.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                            <path d="M9 18h6"/>
+                            <path d="M10 22h4"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Optimiser l'énergie</h4>
+                        <p>Éteindre les appareils en veille et adopter l'éclairage basse consommation LED.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Préserver l'eau précieuse</h4>
+                        <p>Réparer immédiatement les fuites et récupérer l'eau pluviale pour les besoins non potables.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 10v10"/>
+                            <path d="M12 10a5 5 0 0 1 5-5h2v2a5 5 0 0 1-5 5h-2"/>
+                            <path d="M12 14a5 5 0 0 0-5-5H5v2a5 5 0 0 0 5 5h2"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Planter des arbres</h4>
+                        <p>Végétaliser son espace apporte fraîcheur, purifie l'air et restaure la biodiversité locale.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Privilégier le durable</h4>
+                        <p>Entretenir et réparer plutôt que jeter, et soutenir l'artisanat et les filières responsables.</p>
+                    </div>
+                </div>
+
+                <div class="gesture-card">
+                    <div class="gesture-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+                            <path d="M10 6h4"/>
+                            <path d="M10 10h4"/>
+                            <path d="M10 14h4"/>
+                            <path d="M10 18h4"/>
+                        </svg>
+                    </div>
+                    <div class="gesture-info">
+                        <h4>Protéger nos espaces communs</h4>
+                        <p>Garder propres nos rues, caniveaux et cours d'eau pour préserver notre santé collective.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 12 : ÉQUIPE ENGAGÉE
+         ========================================================== -->
+    <section id="equipe" class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Notre Force</span>
+                <h2 class="section-title">Une équipe engagée</h2>
+                <p class="section-description">
+                    Des femmes et des hommes passionnés, alliant expertise technique et présence active sur le terrain.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <!-- Membre 1 -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="prPic.jpeg" alt="TRAORE Abdoul Somad Messamory">
+                    </div>
+                    <div class="team-details">
+                        <h3 class="team-name">TRAORE Abdoul Somad Messamory</h3>
+                        <p class="team-role">Fondateur / Président de l'ONG Act'ère</p>
+                        <p class="team-bio">Ingénieur en énergies renouvelables, engagé pour l'accès universel à une électricité propre.</p>
+                    </div>
+                </div>
+
+                <!-- Membre 2 -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="RespoapffPic.jpeg" alt="SORO Gninimegnan Irène">
+                    </div>
+                    <div class="team-details">
+                        <h3 class="team-name">SORO Gninimegnan Irène</h3>
+                        <p class="team-role">Responsable des actions pour la préservation de la faune et de la flore</p>
+                        <p class="team-bio">elle encadre et coordonne les activités au sein de l'équipe et en dehors.</p>
+                    </div>
+                </div>
+
+                <!-- Membre 3 -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="Respocothïc.jpeg" alt="HAIDARA Issa">
+                    </div>
+                    <div class="team-details">
+                        <h3 class="team-name">HAIDARA Issa</h3>
+                        <p class="team-role">Responsable de la commission thématique</p>
+                        <p class="team-bio">il est chargé de l'évaluation scientifique des projets, de la mesure de l'impact environnemental.</p>
+                    </div>
+                </div>
+
+                <!-- Membre 4 -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="RespocomPic.jpeg" alt="KANGAH Roland Yane Trésor">
+                    </div>
+                    <div class="team-details">
+                        <h3 class="team-name">KANGAH Roland Yane Trésor</h3>
+                        <p class="team-role">Responsable chargé de la communication et des relations extérieures</p>
+                        <p class="team-bio">il assure la communication et la gestion des relations extérieures de l'ONG.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3.5rem;">
+                <a href="equipe.html" class="btn btn-outline-green">
+                    Faire connaissance avec toute l'équipe <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 13 : ACTUALITÉS & SENSIBILISATION
+         ========================================================== -->
+    <section id="actualites" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Sensibilisation & Veille</span>
+                <h2 class="section-title">Actualités & Initiatives</h2>
+                <p class="section-description">
+                    Restez informés de nos actions récentes, retours d'expérience et conseils écologiques pratiques.
+                </p>
+            </div>
+
+            <div class="articles-grid" id="home-news-container">
+                <!-- Rendu dynamique via l'API des articles et js/main.js -->
+                <!-- Article 1 -->
+                <article class="article-card">
+                    <div class="article-thumb">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80" alt="Énergie Solaire Rurale">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="category">Énergies</span>
+                            <span class="date">14 Sept. 2024</span>
+                        </div>
+                        <h3 class="article-title">L'énergie solaire, un levier d'autonomie pour nos terroirs</h3>
+                        <p class="article-excerpt">
+                            Comment les mini-réseaux et kits photovoltaïques revitalisent l'économie locale et l'éducation dans les villages.
+                        </p>
+                        <a href="actualites.html" class="article-link">
+                            Lire l'article <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card">
+                    <div class="article-thumb">
+                        <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80" alt="Opération Quartier Propre">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="category">Éco-citoyenneté</span>
+                            <span class="date">02 Sept. 2024</span>
+                        </div>
+                        <h3 class="article-title">5 gestes simples pour réduire vos déchets au quotidien</h3>
+                        <p class="article-excerpt">
+                            Des habitudes concrètes et éprouvées à adopter dès aujourd'hui pour préserver votre quartier.
+                        </p>
+                        <a href="actualites.html" class="article-link">
+                            Lire l'article <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card">
+                    <div class="article-thumb">
+                        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80" alt="Reboisement Urbain">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="category">Environnement</span>
+                            <span class="date">22 Août 2024</span>
+                        </div>
+                        <h3 class="article-title">Pourquoi reboiser nos villes est une urgence climatique</h3>
+                        <p class="article-excerpt">
+                            Face à la chaleur et à l'érosion pluviale, la régénération végétale constitue notre meilleur rempart naturel.
+                        </p>
+                        <a href="actualites.html" class="article-link">
+                            Lire l'article <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 15 : CALL-TO-ACTION MAJEUR
+         ========================================================== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Et vous, quelle action <span>allez-vous poser ?</span></h2>
+                <p class="cta-subtitle">
+                    Rejoignez les initiatives d'ACT’ERE et participez activement à la construction d'un environnement plus durable et plus juste.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        Agir maintenant <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 16 : CONTACT & FORMULAIRE
+         ========================================================== -->
+    <section id="contact" class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Contactez-nous</span>
+                <h2 class="section-title">Passons à l'action ensemble</h2>
+                <p class="section-description">
+                    Vous souhaitez soutenir un projet, devenir bénévole ou proposer un partenariat ? Écrivez-nous.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Coordonnées directes -->
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Siège social</h4>
+                            <p>Bouaké, Côte d'Ivoire</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Email officiel</h4>
+                            <p>ongactere@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+225 05 65 13 23 36 / 07 67 55 71 03</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire conforme au PRD (Section 16) -->
+                <div class="contact-form-container">
+                    <form id="actere-contact-form">
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="name">Votre Nom *</label>
+                                <input type="text" id="name" class="form-control" placeholder="ex. Koffi Emmanuel" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Votre Email *</label>
+                                <input type="email" id="email" class="form-control" placeholder="nom@exemple.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="+225 ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Sujet du message *</label>
+                                <input type="text" id="subject" class="form-control" placeholder="ex. Bénévolat / Partenariat" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre Message *</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Envoyer le message <span class="btn-arrow">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 17 : FOOTER
+         ========================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Colonne 1 : Identité -->
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <img src="logo.png" alt="Logo ONG ACT'ERE">
+                        <span class="brand-text">ONG ACT’ERE</span>
+                    </div>
+                    <p class="footer-desc">
+                        Organisation non gouvernementale dédiée à la promotion des énergies renouvelables, à la préservation de la nature et à l'éco-citoyenneté active.
+                    </p>
+                </div>
+
+                <!-- Colonne 2 : Navigation -->
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                        <li><a href="#equipe">Équipe</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 : Nos Actions -->
+                <div class="footer-col">
+                    <h4>Nos actions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#actions">Énergies renouvelables</a></li>
+                        <li><a href="#actions">Éco-citoyenneté</a></li>
+                        <li><a href="#actions">Protection environnementale</a></li>
+                        <li><a href="#actions">Sensibilisation citoyenne</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4 : Coordonnées -->
+                <div class="footer-col">
+                    <h4>Contact direct</h4>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>ongactere@gmail.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 
+                    </div>
+                    <div class="footer-contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Bouaké, Côte d'Ivoire</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© ACT’ERE — Tous droits réservés.</div>
+                <div>Agir aujourd'hui pour préserver demain.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================
+         MODAL DÉTAILS PROJET
+         ========================================================== -->
+    <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card">
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Fermer la fenêtre" data-close-modal>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div style="border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; max-height: 300px;">
+                <img id="modal-project-img" src="Pub4.jpeg" alt="Projet" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <span id="modal-project-category" class="section-badge" style="margin-bottom: 0.8rem;">Catégorie</span>
+            <h3 id="modal-project-title" style="font-size: 1.6rem; margin-bottom: 0.5rem; font-weight:800;">Titre</h3>
+            <div style="display:flex; gap:1.5rem; font-size:0.9rem; color:var(--text-muted); margin-bottom:1.2rem; align-items: center;">
+                <div style="display:inline-flex; align-items:center; gap:0.4rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--primary-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="modal-project-location">Lieu</span>
+                </div>
+                <div>Status : <strong id="modal-project-status" style="color:var(--primary-green);">Réalisé</strong></div>
+            </div>
+            <p id="modal-project-content" style="color:var(--text-muted); line-height:1.7; margin-bottom:2rem;">Contenu détaillé</p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="#contact" class="btn btn-primary" onclick="window.closeProjectModal && window.closeProjectModal();">
+                    Participer à ce projet <span class="btn-arrow">→</span>
+                </a>
+                <button type="button" class="btn-light-pill btn-close-modal" data-close-modal onclick="window.closeProjectModal && window.closeProjectModal();">
+                    Fermer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MODAL LECTURE ARTICLE D'ACTUALITÉ
+         ========================================================== -->
+    <div id="article-read-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+        <div class="modal-card" style="max-width: 760px; max-height: 90vh; overflow-y: auto;">
+            <button id="article-modal-close-btn" class="modal-close-btn" aria-label="Fermer la fenêtre" onclick="window.closeArticleReadModal && window.closeArticleReadModal();">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div style="border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; max-height: 320px; background:#000;">
+                <img id="modal-art-img" src="hero-bg.jpg" alt="Article" style="width:100%; height:320px; object-fit:cover; display:block;">
+            </div>
+            <div style="display:flex; gap:1rem; align-items:center; margin-bottom:0.8rem; flex-wrap:wrap;">
+                <span id="modal-art-category" class="section-badge" style="margin-bottom:0;">Catégorie</span>
+                <span id="modal-art-date" style="font-size:0.85rem; color:var(--text-muted);">Date</span>
+                <span id="modal-art-author" style="font-size:0.85rem; color:var(--text-muted);">Par Auteur</span>
+            </div>
+            <h3 id="modal-art-title" style="font-size: 1.65rem; margin-bottom: 0.8rem; font-weight:800; line-height:1.35; color:var(--text-dark);">Titre</h3>
+            <div id="modal-art-excerpt" style="font-size:1.02rem; font-weight:600; color:var(--primary-green); background:rgba(82,183,90,0.08); padding:0.9rem 1.2rem; border-radius:8px; margin-bottom:1.4rem; border-left:3px solid var(--primary-green);">Extrait</div>
+            <div id="modal-art-content" style="color:var(--text-main); line-height:1.8; margin-bottom:2rem; font-size:0.95rem; white-space:pre-wrap;">Contenu détaillé</div>
+            <div style="display:flex; justify-content:flex-end;">
+                <button type="button" class="btn-light-pill btn-close-modal" onclick="window.closeArticleReadModal && window.closeArticleReadModal();">
+                    Fermer la lecture
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>
