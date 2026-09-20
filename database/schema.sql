@@ -217,6 +217,20 @@ INSERT INTO team (name, role, bio, photo, social_links) VALUES
     'Responsable chargé de la communication et des relations extérieures, il assure la visibilité et la diplomatie publique de l''ONG.',
     'RespocomPic.jpeg',
     '{"linkedin": "https://linkedin.com"}'::jsonb
+),
+(
+    'Membre de l''Équipe',
+    'Projets & Énergies Renouvelables',
+    'Chargé(e) du déploiement technique des solutions d''énergies solaires, du diagnostic énergétique et du suivi opérationnel des installations.',
+    'team-placeholder-1.svg',
+    '{"linkedin": "https://linkedin.com"}'::jsonb
+),
+(
+    'Membre de l''Équipe',
+    'Éducation & Mobilisation Citoyenne',
+    'Chargé(e) des programmes de formation éco-citoyenne, de la coordination des ateliers dans les écoles et de la sensibilisation des jeunes.',
+    'team-placeholder-2.svg',
+    '{"linkedin": "https://linkedin.com"}'::jsonb
 );
 
 INSERT INTO articles (title, slug, category, excerpt, content, image, author) VALUES

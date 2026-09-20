@@ -239,6 +239,24 @@ const ActereData = {
             photo: "RespocomPic.jpeg",
             linkedin: "#",
             twitter: "#"
+        },
+        {
+            id: 7,
+            name: "Membre de l'Équipe",
+            role: "Projets & Énergies Renouvelables",
+            bio: "Chargé(e) du déploiement technique des solutions d'énergies solaires, du diagnostic énergétique et du suivi opérationnel des installations.",
+            photo: "team-placeholder-1.svg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 8,
+            name: "Membre de l'Équipe",
+            role: "Éducation & Mobilisation Citoyenne",
+            bio: "Chargé(e) des programmes de formation éco-citoyenne, de la coordination des ateliers dans les écoles et de la sensibilisation des jeunes.",
+            photo: "team-placeholder-2.svg",
+            linkedin: "#",
+            twitter: "#"
         }
     ],
 
@@ -279,7 +297,20 @@ const ActereData = {
         }
     ],
 
-    // 7. Gestion des messages (API / localStorage)
+    // 7. Informations de contact officielles
+    contactInfo: {
+        address: "Quartier municipal, Rue Mosquée, Bouaké, Région du Gbêkê, District de la vallée du Bandama, Côte d'Ivoire",
+        city: "Bouaké",
+        country: "Côte d'Ivoire",
+        email: "actereong@gmail.com",
+        phones: [
+            "+225 07 67 55 71 03",
+            "+225 05 65 13 23 36",
+            "+225 07 03 02 29 79"
+        ]
+    },
+
+    // 8. Gestion des messages (API / localStorage)
     saveContactMessage(messageData) {
         const messages = JSON.parse(localStorage.getItem('actere_messages') || '[]');
         const newMessage = {
