@@ -177,9 +177,9 @@ INSERT INTO projects (title, slug, category, description, content, image, locati
 
 INSERT INTO team (name, role, bio, photo, social_links) VALUES
 (
-    'TRAORE Abdoul Somad Messamory',
+    'Messamory TRAORE',
     'Fondateur & Président',
-    'Ingénieur en énergies renouvelables, il supervise les partenariats institutionnels, le plaidoyer énergétique et la stratégie globale d''ACT''ERE.',
+    'Acteur engagé pour la préservation de l''environnement et pour la promotion du développement durable.',
     'prPic.jpeg',
     '{"linkedin": "https://linkedin.com"}'::jsonb
 ),

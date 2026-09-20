@@ -1388,14 +1388,22 @@
                     <textarea id="articleContent" class="admin-form-control" rows="8" placeholder="Rédigez ici l'intégralité de votre article, reportage ou analyse..." required></textarea>
                 </div>
 
-                <div style="display:flex; justify-content:flex-end; gap:1rem; margin-top:1.5rem; align-items:center;">
-                    <button type="button" class="btn-refresh" onclick="closeArticleModal()" style="border:1px solid #ccc; background:#fff; color:#444;">
-                        Annuler
-                    </button>
-                    <button type="submit" class="btn-export" id="btnSubmitArticle" style="padding:0.85rem 1.8rem;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                        <span id="btnSubmitArticleText">Publier l'article</span>
-                    </button>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; flex-wrap:wrap; gap:1rem;">
+                    <div>
+                        <button type="button" id="btnDeleteArticleInModal" onclick="deleteArticleFromModal()" style="display:none; padding:0.75rem 1.25rem; background:#fee2e2; color:#b91c1c; font-size:0.85rem; font-weight:700; border-radius:10px; border:1px solid #fca5a5; cursor:pointer; align-items:center; gap:0.4rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                            <span>Supprimer cet article</span>
+                        </button>
+                    </div>
+                    <div style="display:flex; gap:1rem; align-items:center; margin-left:auto;">
+                        <button type="button" class="btn-refresh" onclick="closeArticleModal()" style="border:1px solid #ccc; background:#fff; color:#444;">
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn-export" id="btnSubmitArticle" style="padding:0.85rem 1.8rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                            <span id="btnSubmitArticleText">Publier l'article</span>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -1422,8 +1430,17 @@
             <div id="previewModalContent" style="font-size:0.95rem; line-height:1.8; color:#333; white-space:pre-wrap; margin-bottom:1.5rem;">
                 Contenu
             </div>
-            <div style="display:flex; justify-content:flex-end;">
-                <button type="button" class="btn-export" onclick="closeArticlePreviewModal()">Fermer l'aperçu</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; border-top:1px solid #e8f0e8; padding-top:1.2rem;">
+                <button type="button" id="btnDeleteFromPreview" onclick="deleteArticleFromPreview()" style="padding:0.65rem 1.2rem; background:#fee2e2; color:#b91c1c; font-size:0.84rem; font-weight:700; border-radius:8px; border:1px solid #fca5a5; cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                    <span>Supprimer</span>
+                </button>
+                <div style="display:flex; gap:0.8rem; align-items:center;">
+                    <button type="button" id="btnEditFromPreview" onclick="editArticleFromPreview()" class="btn-refresh" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd; font-weight:700; padding:0.65rem 1.2rem;">
+                        Modifier l'article
+                    </button>
+                    <button type="button" class="btn-export" onclick="closeArticlePreviewModal()" style="padding:0.65rem 1.2rem;">Fermer</button>
+                </div>
             </div>
         </div>
     </div>
@@ -2142,7 +2159,7 @@
                         <button class="btn-act edit" onclick="openArticleModal(${art.id})" title="Modifier l'article">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
                         </button>
-                        <button class="btn-act delete" onclick="deleteArticle(${art.id}, '${escapeHtml(art.title.replace(/'/g, "\\'"))}')" title="Supprimer l'article">
+                        <button class="btn-act delete" onclick="deleteArticle(${art.id})" title="Supprimer l'article">
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
                         </button>
                     </div>
@@ -2178,46 +2195,44 @@
     }
 
     /* ─── MODAL ÉDITION / CRÉATION D'ARTICLE ─── */
+    let currentPreviewArticleId = null;
+
     function setImageMode(mode) {
         currentImageMode = mode;
         const btnUpload = document.getElementById('btnModeUpload');
         const btnUrl = document.getElementById('btnModeUrl');
-        const secUpload = document.getElementById('imageUploadSection');
-        const secUrl = document.getElementById('imageUrlSection');
+        const uploadSec = document.getElementById('imageUploadSection');
+        const urlSec = document.getElementById('imageUrlSection');
 
         if (mode === 'upload') {
-            btnUpload.style.background = '#e8f5e9';
-            btnUpload.style.color = '#2d6a31';
-            btnUrl.style.background = '#f0f7f0';
-            btnUrl.style.color = '#666';
-            secUpload.style.display = 'block';
-            secUrl.style.display = 'none';
+            btnUpload.classList.add('active');
+            btnUrl.classList.remove('active');
+            uploadSec.style.display = 'block';
+            urlSec.style.display = 'none';
         } else {
-            btnUrl.style.background = '#e8f5e9';
-            btnUrl.style.color = '#2d6a31';
-            btnUpload.style.background = '#f0f7f0';
-            btnUpload.style.color = '#666';
-            secUpload.style.display = 'none';
-            secUrl.style.display = 'block';
+            btnUrl.classList.add('active');
+            btnUpload.classList.remove('active');
+            uploadSec.style.display = 'none';
+            urlSec.style.display = 'block';
         }
     }
 
-    function handleImageFileSelect(input) {
-        if (input.files && input.files[0]) {
-            const file = input.files[0];
-            selectedArticleImageFile = file;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                showImagePreview(e.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
+    function handleImageFileSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        selectedArticleImageFile = file;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            showImagePreview(e.target.result);
+        };
+        reader.readAsDataURL(file);
     }
 
     function handleImageUrlChange(url) {
-        if (url && url.trim().length > 5) {
-            selectedArticleImageFile = null;
-            showImagePreview(url.trim());
+        if (url && url.startsWith('http')) {
+            showImagePreview(url);
+        } else {
+            removeSelectedImage();
         }
     }
 
@@ -2242,6 +2257,7 @@
         const titleEl = document.getElementById('articleModalTitle');
         const submitBtnText = document.getElementById('btnSubmitArticleText');
         const form = document.getElementById('articleForm');
+        const btnDelete = document.getElementById('btnDeleteArticleInModal');
 
         form.reset();
         removeSelectedImage();
@@ -2268,11 +2284,13 @@
 
             titleEl.textContent = "Modifier l'article";
             submitBtnText.textContent = "Enregistrer les modifications";
+            if (btnDelete) btnDelete.style.display = 'inline-flex';
         } else {
             document.getElementById('articleEditId').value = '';
             document.getElementById('articleAuthor').value = 'Équipe ACT\'ERE';
             titleEl.textContent = "Rédiger un nouvel article";
             submitBtnText.textContent = "Publier l'article";
+            if (btnDelete) btnDelete.style.display = 'none';
         }
 
         modal.classList.add('open');
@@ -2318,7 +2336,7 @@
             }
 
             const url = editId ? `${API}/api/articles/${editId}` : `${API}/api/articles`;
-            const method = editId ? 'POST' : 'POST';
+            const method = 'POST';
 
             const res = await fetch(url, {
                 method: method,
@@ -2341,7 +2359,9 @@
         }
     }
 
-    async function deleteArticle(articleId, title) {
+    async function deleteArticle(articleId, customTitle = null) {
+        const art = allArticles.find(a => a.id === articleId);
+        const title = customTitle || (art ? art.title : "cet article");
         if (confirm(`Êtes-vous sûr de vouloir supprimer définitivement l'article :\n"${title}" ?`)) {
             try {
                 const res = await fetch(`${API}/api/articles/${articleId}`, { method: 'DELETE' });
@@ -2357,10 +2377,32 @@
         }
     }
 
+    async function deleteArticleFromModal() {
+        const editId = parseInt(document.getElementById('articleEditId').value);
+        if (!editId) return;
+        const art = allArticles.find(a => a.id === editId);
+        const title = art ? art.title : "cet article";
+        if (confirm(`Êtes-vous sûr de vouloir supprimer définitivement l'article :\n"${title}" ?`)) {
+            try {
+                const res = await fetch(`${API}/api/articles/${editId}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    closeArticleModal();
+                    await loadArticles();
+                } else {
+                    alert('Erreur lors de la suppression : ' + (data.message || ''));
+                }
+            } catch (e) {
+                alert('Erreur réseau lors de la suppression.');
+            }
+        }
+    }
+
     /* ─── APERÇU DE L'ARTICLE ─── */
     function previewArticle(articleId) {
         const art = allArticles.find(a => a.id === articleId);
         if (!art) return;
+        currentPreviewArticleId = articleId;
 
         const imgUrl = art.image.startsWith('http') || art.image.startsWith('/') ? art.image : `${API}/${art.image}`;
         document.getElementById('previewModalImg').src = imgUrl;
@@ -2376,6 +2418,36 @@
 
     function closeArticlePreviewModal() {
         document.getElementById('articlePreviewModal').classList.remove('open');
+        currentPreviewArticleId = null;
+    }
+
+    async function deleteArticleFromPreview() {
+        if (!currentPreviewArticleId) return;
+        const idToDelete = currentPreviewArticleId;
+        const art = allArticles.find(a => a.id === idToDelete);
+        const title = art ? art.title : "cet article";
+        if (confirm(`Êtes-vous sûr de vouloir supprimer définitivement l'article :\n"${title}" ?`)) {
+            try {
+                const res = await fetch(`${API}/api/articles/${idToDelete}`, { method: 'DELETE' });
+                const data = await res.json();
+                if (data.success) {
+                    closeArticlePreviewModal();
+                    await loadArticles();
+                } else {
+                    alert('Erreur lors de la suppression : ' + (data.message || ''));
+                }
+            } catch (e) {
+                alert('Erreur réseau lors de la suppression.');
+            }
+        }
+    }
+
+    function editArticleFromPreview() {
+        const idToEdit = currentPreviewArticleId;
+        closeArticlePreviewModal();
+        if (idToEdit) {
+            openArticleModal(idToEdit);
+        }
     }
 
     function escapeHtml(str) {

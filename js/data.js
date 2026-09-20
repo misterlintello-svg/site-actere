@@ -188,9 +188,9 @@ const ActereData = {
     team: [
         {
             id: 1,
-            name: "TRAORE Abdoul Somad Messamory",
+            name: "Messamory TRAORE",
             role: "Fondateur & Président",
-            bio: "Ingénieur en énergies renouvelables, il supervise les partenariats institutionnels, le plaidoyer énergétique et la stratégie globale d'ACT'ERE.",
+            bio: "Acteur engagé pour la préservation de l'environnement et pour la promotion du développement durable.",
             photo: "prPic.jpeg",
             linkedin: "#",
             twitter: "#"
