@@ -8,6 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Dark Mode Pré-initialisation pour éviter le clignotement -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('actere_admin_theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body {
@@ -296,6 +306,139 @@
             background: #dc2626;
             color: #ffffff;
             border-color: #dc2626;
+        }
+
+        .btn-theme-admin {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .btn-theme-admin:hover {
+            background: rgba(82, 183, 90, 0.25);
+            border-color: #52B75A;
+        }
+        .admin-theme-sun { display: none; }
+        .admin-theme-moon { display: block; }
+        [data-theme="dark"] .admin-theme-sun { display: block; }
+        [data-theme="dark"] .admin-theme-moon { display: none; }
+
+        /* ─── VARIABLES ET STYLES DU MODE SOMBRE POUR ADMIN ─── */
+        [data-theme="dark"] body,
+        [data-theme="dark"] html {
+            background: #08120B !important;
+            color: #E2ECE5 !important;
+        }
+        [data-theme="dark"] .admin-main {
+            background: #08120B !important;
+        }
+        [data-theme="dark"] .tab-btn {
+            color: #8FA896;
+        }
+        [data-theme="dark"] .tab-btn.active {
+            background: #102116;
+            color: #E8FBE9;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.25);
+        }
+        [data-theme="dark"] .tab-nav {
+            border-bottom-color: #1A3322;
+        }
+        [data-theme="dark"] .stat-card,
+        [data-theme="dark"] .table-card,
+        [data-theme="dark"] .chart-card {
+            background: #0F2014 !important;
+            border-color: #1A3622 !important;
+            color: #E2ECE5 !important;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+        }
+        [data-theme="dark"] .stat-label {
+            color: #8FA896;
+        }
+        [data-theme="dark"] .stat-value,
+        [data-theme="dark"] .table-title,
+        [data-theme="dark"] .chart-title {
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .table-header {
+            border-bottom-color: #1A3622 !important;
+        }
+        [data-theme="dark"] .search-input,
+        [data-theme="dark"] .status-select,
+        [data-theme="dark"] .admin-form-control {
+            background: #09150D !important;
+            border-color: #1E3F27 !important;
+            color: #E2ECE5 !important;
+        }
+        [data-theme="dark"] .search-input:focus,
+        [data-theme="dark"] .status-select:focus,
+        [data-theme="dark"] .admin-form-control:focus {
+            border-color: #52B75A !important;
+        }
+        [data-theme="dark"] thead th {
+            background: #07130A !important;
+            color: #8FA896 !important;
+            border-bottom: 1px solid #1A3622 !important;
+        }
+        [data-theme="dark"] tbody tr {
+            border-color: #1A3622 !important;
+            background: #0F2014 !important;
+        }
+        [data-theme="dark"] tbody tr:hover {
+            background: #14281B !important;
+        }
+        [data-theme="dark"] tbody td {
+            color: #D6E4DA !important;
+            border-bottom-color: #1A3622 !important;
+        }
+        [data-theme="dark"] .btn-view {
+            background: #142A1B !important;
+            border-color: #21442B !important;
+            color: #A3D9AE !important;
+        }
+        [data-theme="dark"] .btn-view:hover {
+            background: #52B75A !important;
+            color: #ffffff !important;
+        }
+        [data-theme="dark"] .status-bar {
+            background: #102417 !important;
+            border-color: #1E3F28 !important;
+            color: #A3D9AE !important;
+        }
+        [data-theme="dark"] .modal-box,
+        [data-theme="dark"] .modal-box-large {
+            background: #0F2014 !important;
+            border: 1px solid #1E3F27 !important;
+            color: #E2ECE5 !important;
+        }
+        [data-theme="dark"] .modal-header-title {
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .modal-msg-body {
+            background: #09150D !important;
+            border-color: #1A3622 !important;
+            color: #D6E4DA !important;
+        }
+        [data-theme="dark"] .modal-close {
+            background: #152B1C !important;
+            color: #A3D9AE !important;
+        }
+        [data-theme="dark"] .admin-form-label {
+            color: #A3D9AE !important;
+        }
+        [data-theme="dark"] .empty-state-title {
+            color: #A3D9AE !important;
+        }
+        [data-theme="dark"] .breakdown-pct {
+            background: #09150D !important;
         }
 
         /* ─── MAIN ─── */
@@ -1081,6 +1224,11 @@
             </div>
         </div>
         <div class="header-actions">
+            <button class="btn-theme-admin" onclick="toggleAdminTheme()" id="btnAdminTheme" title="Changer de thème (sombre/clair)">
+                <svg class="admin-theme-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                <svg class="admin-theme-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span id="btnAdminThemeText">Mode Sombre</span>
+            </button>
             <button class="btn-refresh" onclick="loadAllData()" title="Recharger les données">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
                 <span>Actualiser</span>
@@ -2629,7 +2777,43 @@
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // Démarrage : contrôle de l'authentification
+    /* ─── GESTION DU MODE SOMBRE POUR ADMIN ─── */
+    function initAdminTheme() {
+        const savedTheme = localStorage.getItem('actere_admin_theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const txt = document.getElementById('btnAdminThemeText');
+            if (txt) txt.textContent = 'Mode Clair';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            const txt = document.getElementById('btnAdminThemeText');
+            if (txt) txt.textContent = 'Mode Sombre';
+        }
+    }
+
+    function toggleAdminTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('actere_admin_theme', newTheme);
+        
+        const txt = document.getElementById('btnAdminThemeText');
+        if (txt) txt.textContent = newTheme === 'dark' ? 'Mode Clair' : 'Mode Sombre';
+        
+        // Recharger les graphiques si actifs pour recalculer les couleurs
+        if (dataAnalytics && dataAnalytics.daily_visits) {
+            renderDailyChart(dataAnalytics.daily_visits);
+        }
+        if (dataAnalytics && dataAnalytics.monthly_visits) {
+            renderMonthlyChart(dataAnalytics.monthly_visits);
+        }
+    }
+
+    // Démarrage : initialisation thème & contrôle d'authentification
+    initAdminTheme();
     checkAuth();
 </script>
 </body>
