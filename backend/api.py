@@ -158,9 +158,12 @@ def serve_secret_admin():
     return send_from_directory(BASE_DIR, 'admin.html')
 
 def get_db():
-    """Connexion a la base de donnees PostgreSQL (psycopg3)."""
+    """Connexion a la base de donnees PostgreSQL (psycopg3). Compatible avec Supabase, Neon et Render."""
     if DATABASE_URL:
-        return psycopg.connect(DATABASE_URL)
+        url = DATABASE_URL.strip()
+        if url.startswith('postgres://'):
+            url = url.replace('postgres://', 'postgresql://', 1)
+        return psycopg.connect(url)
     return psycopg.connect(
         host=DB_CONFIG['host'],
         port=DB_CONFIG['port'],

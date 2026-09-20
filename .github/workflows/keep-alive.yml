@@ -1,0 +1,21 @@
+﻿name: Keep Alive Render Server
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping ACT'ERE Health Endpoint
+        run: |
+          echo "Pinging ACT'ERE Render server..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://site-actere.onrender.com/api/health)
+          echo "HTTP Status: $STATUS"
+          if [ "$STATUS" -eq 200 ]; then
+            echo "Server is awake and healthy!"
+          else
+            echo "Pinged with status $STATUS"
+          fi
