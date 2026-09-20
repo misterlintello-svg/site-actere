@@ -560,7 +560,7 @@ def export_contact_excel():
 # ─────────────────────────────────────────────
 @app.route('/api/analytics/visit', methods=['POST'])
 def track_visit():
-    data = request.get_json() or {}
+    data = request.get_json(silent=True) or request.get_json(force=True, silent=True) or {}
     visitor_id = (data.get('visitor_id') or 'anon').strip()[:64]
     session_id = (data.get('session_id') or 'anon').strip()[:64]
     page_url = (data.get('page_url') or request.path).strip()[:255]
@@ -590,7 +590,7 @@ def track_visit():
 
 @app.route('/api/analytics/click', methods=['POST'])
 def track_click():
-    data = request.get_json() or {}
+    data = request.get_json(silent=True) or request.get_json(force=True, silent=True) or {}
     visitor_id = (data.get('visitor_id') or 'anon').strip()[:64]
     session_id = (data.get('session_id') or 'anon').strip()[:64]
     page_url = (data.get('page_url') or '').strip()[:255]
