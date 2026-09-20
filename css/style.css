@@ -39,89 +39,250 @@
 
 /* --- VARIABLES MODE SOMBRE (DARK THEME) --- */
 [data-theme="dark"] {
-    --bg-white: #0A160F;
-    --bg-light: #0F2016;
+    --bg-white: #08140B;
+    --bg-light: #0D1E12;
     --text-main: #E5EFE7;
-    --text-muted: #9BB3A2;
-    --border-color: #1A3622;
+    --text-muted: #A3BAAA;
+    --border-color: #173721;
     --card-border: rgba(82, 183, 90, 0.25);
-    --light-green-bg: #14301D;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+    --light-green-bg: #122B1A;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 16px 45px rgba(0, 0, 0, 0.65);
+    --shadow-green: 0 8px 25px rgba(82, 183, 90, 0.25);
+}
+
+/* Backgrounds de sections */
+[data-theme="dark"] body {
+    background-color: #08140B;
+    color: #E5EFE7;
 }
 
 [data-theme="dark"] .section-light {
-    background-color: #0F2016 !important;
+    background-color: #0C1B10 !important;
 }
 
 [data-theme="dark"] .section-white {
-    background-color: #0A160F !important;
+    background-color: #08140B !important;
 }
 
+[data-theme="dark"] .section-dark {
+    background-color: #050E07 !important;
+    border-top: 1px solid #142B1B;
+    border-bottom: 1px solid #142B1B;
+}
+
+/* Cartes & Conteneurs */
 [data-theme="dark"] .pillar-card,
 [data-theme="dark"] .project-card,
 [data-theme="dark"] .article-card,
 [data-theme="dark"] .impact-card,
 [data-theme="dark"] .team-card,
 [data-theme="dark"] .team-card-detailed,
-[data-theme="dark"] .contact-form-card,
+[data-theme="dark"] .action-card,
+[data-theme="dark"] .highlight-item,
+[data-theme="dark"] .gesture-card,
+[data-theme="dark"] .contact-form-container,
 [data-theme="dark"] .contact-info-card,
-[data-theme="dark"] .modal-card {
-    background-color: #12261A !important;
-    border-color: #1E3F28 !important;
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .news-lead-card {
+    background-color: #0F2315 !important;
+    border: 1px solid #1A3E25 !important;
     color: var(--text-main) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
+[data-theme="dark"] .pillar-card:hover,
+[data-theme="dark"] .project-card:hover,
+[data-theme="dark"] .article-card:hover,
+[data-theme="dark"] .team-card:hover,
+[data-theme="dark"] .team-card-detailed:hover,
+[data-theme="dark"] .action-card:hover,
+[data-theme="dark"] .gesture-card:hover,
+[data-theme="dark"] .contact-info-card:hover {
+    border-color: rgba(82, 183, 90, 0.5) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(82, 183, 90, 0.12) !important;
+}
+
+/* Titres & Typographie */
 [data-theme="dark"] .pillar-title,
 [data-theme="dark"] .project-title,
 [data-theme="dark"] .article-title,
 [data-theme="dark"] .team-name,
 [data-theme="dark"] .team-card-name,
 [data-theme="dark"] .section-title,
-[data-theme="dark"] .contact-form-title {
+[data-theme="dark"] .contact-form-title,
+[data-theme="dark"] .action-card h3,
+[data-theme="dark"] .highlight-item h4,
+[data-theme="dark"] .gesture-info h4,
+[data-theme="dark"] .director-name,
+[data-theme="dark"] .modal-header-title {
     color: #FFFFFF !important;
 }
 
-[data-theme="dark"] .form-control {
-    background-color: #09140D !important;
-    border-color: #1E3F28 !important;
+[data-theme="dark"] .section-description,
+[data-theme="dark"] .project-description,
+[data-theme="dark"] .article-excerpt,
+[data-theme="dark"] .team-bio,
+[data-theme="dark"] .about-text,
+[data-theme="dark"] .action-card p,
+[data-theme="dark"] .gesture-info p,
+[data-theme="dark"] .highlight-item p,
+[data-theme="dark"] .director-statement,
+[data-theme="dark"] .footer-desc {
+    color: #A6BFAD !important;
+}
+
+/* Icônes & Bulles */
+[data-theme="dark"] .highlight-icon,
+[data-theme="dark"] .action-icon-circle,
+[data-theme="dark"] .gesture-icon,
+[data-theme="dark"] .contact-icon-box {
+    background: #142F1C !important;
+    border-color: rgba(82, 183, 90, 0.3) !important;
+    color: #64D770 !important;
+}
+
+[data-theme="dark"] .highlight-icon svg,
+[data-theme="dark"] .action-icon-circle svg,
+[data-theme="dark"] .gesture-icon svg,
+[data-theme="dark"] .contact-icon-box svg {
+    stroke: #64D770 !important;
+}
+
+[data-theme="dark"] .action-card:hover .action-icon-circle,
+[data-theme="dark"] .gesture-card:hover .gesture-icon,
+[data-theme="dark"] .contact-info-card:hover .contact-icon-box {
+    background: var(--primary-green) !important;
+}
+
+[data-theme="dark"] .action-card:hover .action-icon-circle svg,
+[data-theme="dark"] .gesture-card:hover .gesture-icon svg,
+[data-theme="dark"] .contact-info-card:hover .contact-icon-box svg {
+    stroke: #FFFFFF !important;
+}
+
+/* Badges & Tags */
+[data-theme="dark"] .section-badge,
+[data-theme="dark"] .article-meta .category {
+    background-color: rgba(82, 183, 90, 0.2) !important;
+    color: #68DB74 !important;
+    border: 1px solid rgba(82, 183, 90, 0.35) !important;
+}
+
+/* Formulaires & Champs de saisie */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="tel"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background-color: #09170E !important;
+    border: 1.5px solid #1A3E25 !important;
+    color: #E8F5E9 !important;
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: rgba(166, 191, 173, 0.55) !important;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+    background-color: #0C2114 !important;
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 0 4px rgba(82, 183, 90, 0.25) !important;
+}
+
+[data-theme="dark"] .form-group label {
+    color: #D1E4D6 !important;
+}
+
+/* Modal de lecture et Modals popups */
+[data-theme="dark"] .modal-backdrop {
+    background: rgba(4, 10, 6, 0.88) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+[data-theme="dark"] .modal-card {
+    background: #0F2315 !important;
+    border: 1px solid #1E462A !important;
+    color: #E5EFE7 !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] .modal-close-btn {
+    background: #142F1C !important;
+    border: 1px solid #1E462A !important;
     color: #E5EFE7 !important;
 }
 
-[data-theme="dark"] .form-control:focus {
-    background-color: #0D1C13 !important;
+[data-theme="dark"] .modal-close-btn:hover {
+    background: var(--primary-green) !important;
+    color: #FFFFFF !important;
     border-color: var(--primary-green) !important;
 }
 
-[data-theme="dark"] .director-message {
-    background: #12261A !important;
+[data-theme="dark"] #modal-art-excerpt {
+    background: #08150D !important;
+    border-left: 4px solid var(--primary-green) !important;
+    color: #B3CBB9 !important;
 }
 
-[data-theme="dark"] .director-statement {
-    color: #D1E5D5 !important;
+[data-theme="dark"] #modal-art-content {
+    color: #D1E4D6 !important;
 }
 
-[data-theme="dark"] .director-name {
-    color: #FFFFFF !important;
+/* Éléments de pied de carte et séparateurs */
+[data-theme="dark"] .project-footer {
+    border-top-color: #173721 !important;
+}
+
+[data-theme="dark"] .project-link,
+[data-theme="dark"] .article-link {
+    color: #64D770 !important;
+}
+
+[data-theme="dark"] .project-link:hover,
+[data-theme="dark"] .article-link:hover {
+    color: #8EF099 !important;
+}
+
+[data-theme="dark"] .floating-badge {
+    background: #0A1C10 !important;
+    border-color: #1A3E25 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Citations Directeur & Equipe */
+[data-theme="dark"] .director-quote-section {
+    background: #08140B !important;
+    border-bottom: 1px solid #173721 !important;
+}
+
+[data-theme="dark"] .director-portrait {
+    border-color: #173721 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
 }
 
 [data-theme="dark"] .director-quote-mark {
-    color: #1E3F28 !important;
+    color: rgba(82, 183, 90, 0.25) !important;
 }
 
-[data-theme="dark"] .news-lead-card {
-    background: #12261A !important;
-    border-color: #1E3F28 !important;
-}
-
-[data-theme="dark"] .header.scrolled {
-    background: rgba(10, 22, 15, 0.95) !important;
-    border-bottom: 1px solid rgba(82, 183, 90, 0.2);
+/* Header & Navigation */
+[data-theme="dark"] .site-header.header-scrolled {
+    background: rgba(7, 18, 10, 0.94) !important;
+    border-bottom: 1px solid rgba(82, 183, 90, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .main-nav {
-    background: #0A160F;
+    background: #08140B;
 }
 
 /* Bouton bascule de thème */
@@ -149,8 +310,9 @@
 
 [data-theme="dark"] .theme-toggle-btn {
     background: rgba(82, 183, 90, 0.2);
-    border-color: rgba(82, 183, 90, 0.4);
-    color: #60C868;
+    border-color: rgba(82, 183, 90, 0.45);
+    color: #64D770;
+    box-shadow: 0 0 12px rgba(82, 183, 90, 0.25);
 }
 
 .theme-icon-sun { display: none; }
@@ -158,6 +320,26 @@
 
 [data-theme="dark"] .theme-icon-sun { display: block; }
 [data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* Custom Dark Scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #050D07;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #173B21;
+    border-radius: 5px;
+    border: 2px solid #050D07;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green);
+}
 
 /* --- RESET & BASES --- */
 *, *::before, *::after {
