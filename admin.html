@@ -1464,6 +1464,41 @@
                 </div>
             </div>
 
+            <!-- GÉOLOCALISATION : TOP PAYS & TOP VILLES -->
+            <div class="analytics-grid-2">
+                <!-- TOP PAYS -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <div class="chart-title">
+                            <span style="font-size: 1.15rem; line-height: 1;">🌍</span>
+                            <span>Top Pays des Visiteurs</span>
+                        </div>
+                        <span class="chart-badge" id="topCountriesBadge">Géolocalisation</span>
+                    </div>
+                    <div class="breakdown-list" id="topCountriesContainer">
+                        <div class="empty-state" style="padding:1.5rem 0;">
+                            <div class="empty-state-title">En attente de données géographiques...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOP VILLES -->
+                <div class="chart-card">
+                    <div class="chart-card-header">
+                        <div class="chart-title">
+                            <span style="font-size: 1.15rem; line-height: 1;">🏙️</span>
+                            <span>Top Villes & Régions</span>
+                        </div>
+                        <span class="chart-badge">Villes Actives</span>
+                    </div>
+                    <div class="breakdown-list" id="topCitiesContainer">
+                        <div class="empty-state" style="padding:1.5rem 0;">
+                            <div class="empty-state-title">En attente de villes...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- APPAREILS & NAVIGATEURS -->
             <div class="analytics-grid-2">
                 <div class="chart-card">
@@ -1981,8 +2016,19 @@
         renderMonthlyChart(data.monthly || []);
         renderTopPages(data.top_pages || []);
         renderTopClicks(data.top_clicks || []);
+        renderCountriesAndCities(data.countries || [], data.cities || [], tot.total_visits || 0);
         renderDevicesAndBrowsers(data.devices || [], data.browsers || [], tot.total_visits || 0);
         renderRecentVisits(data.recent_visits || []);
+    }
+
+    function getCountryFlag(code) {
+        if (!code || typeof code !== 'string' || code.length !== 2) return '🌐';
+        try {
+            const codePoints = code.toUpperCase().split('').map(c => 127397 + c.charCodeAt(0));
+            return String.fromCodePoint(...codePoints);
+        } catch (e) {
+            return '🌐';
+        }
     }
 
     function renderDailyChart(daily) {
@@ -2137,6 +2183,65 @@
         }).join('');
     }
 
+    function renderCountriesAndCities(countries, cities, totalVisits) {
+        // Top Pays
+        const countryContainer = document.getElementById('topCountriesContainer');
+        if (countryContainer) {
+            if (!countries || countries.length === 0) {
+                countryContainer.innerHTML = '<div class="empty-state" style="padding:1.5rem 0;"><div class="empty-state-title">En attente de données géographiques...</div></div>';
+            } else {
+                const maxC = Math.max(...countries.map(c => c.visits), 1);
+                countryContainer.innerHTML = countries.map(c => {
+                    const pct = Math.round((c.visits / maxC) * 100);
+                    const flag = getCountryFlag(c.country_code);
+                    const uniq = c.unique_visitors ? ` • ${c.unique_visitors} unique(s)` : '';
+                    return `
+                        <div class="breakdown-item">
+                            <div class="breakdown-row">
+                                <span style="display:inline-flex; align-items:center; gap:0.5rem; font-weight:600;">
+                                    <span style="font-size:1.25rem; line-height:1;">${flag}</span>
+                                    ${escapeHtml(c.country)}
+                                </span>
+                                <span style="font-weight:700;">${c.visits} visite(s)</span>
+                            </div>
+                            <div class="breakdown-sub">${c.country_code ? `Code : ${escapeHtml(c.country_code)}` : ''}${uniq}</div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: ${pct}%"></div>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+        }
+
+        // Top Villes
+        const cityContainer = document.getElementById('topCitiesContainer');
+        if (cityContainer) {
+            if (!cities || cities.length === 0) {
+                cityContainer.innerHTML = '<div class="empty-state" style="padding:1.5rem 0;"><div class="empty-state-title">En attente de villes...</div></div>';
+            } else {
+                const maxCity = Math.max(...cities.map(c => c.visits), 1);
+                cityContainer.innerHTML = cities.map(c => {
+                    const pct = Math.round((c.visits / maxCity) * 100);
+                    const flag = getCountryFlag(c.country_code);
+                    return `
+                        <div class="breakdown-item">
+                            <div class="breakdown-row">
+                                <span style="display:inline-flex; align-items:center; gap:0.45rem; font-weight:600;">
+                                    <span style="font-size:1.15rem; line-height:1;">${flag}</span>
+                                    ${escapeHtml(c.city)}
+                                </span>
+                                <span style="font-weight:700;">${c.visits} visite(s)</span>
+                            </div>
+                            <div class="breakdown-sub">${escapeHtml(c.country || '')}</div>
+                            <div class="progress-track">
+                                <div class="progress-fill blue" style="width: ${pct}%"></div>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+        }
+    }
+
     function renderDevicesAndBrowsers(devices, browsers, totalVisits) {
         // Appareils
         let desktopCount = 0, mobileCount = 0, tabletCount = 0;
@@ -2195,9 +2300,17 @@
 
         const rows = recent.map(r => {
             const date = r.visited_at ? new Date(r.visited_at).toLocaleString('fr-FR') : '';
+            const flag = getCountryFlag(r.country_code);
+            const locationText = r.city ? `${r.city}, ${r.country || ''}` : (r.country || 'Non localisé');
             return `<tr>
                 <td data-label="ID">#${r.id}</td>
                 <td data-label="Page" style="font-weight:700;">${escapeHtml(r.page_title || r.page_url)}</td>
+                <td data-label="Localisation">
+                    <span style="display:inline-flex; align-items:center; gap:0.35rem; font-weight:600;">
+                        <span style="font-size:1.15rem; line-height:1;">${flag}</span>
+                        <span>${escapeHtml(locationText)}</span>
+                    </span>
+                </td>
                 <td data-label="URL">${escapeHtml(r.page_url)}</td>
                 <td data-label="Appareil"><span class="badge ${r.device_type === 'Mobile' ? 'badge-sponsoring' : 'badge-benevole'}">${escapeHtml(r.device_type || 'Desktop')}</span></td>
                 <td data-label="Navigateur">${escapeHtml(r.browser || 'Autre')}</td>
@@ -2212,6 +2325,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Titre de la Page</th>
+                        <th>Localisation (Pays/Ville)</th>
                         <th>URL</th>
                         <th>Appareil</th>
                         <th>Navigateur</th>

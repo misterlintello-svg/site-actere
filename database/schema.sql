@@ -77,7 +77,7 @@ CREATE INDEX IF NOT EXISTS idx_inscriptions_email ON inscriptions(email_gmail);
 CREATE INDEX IF NOT EXISTS idx_inscriptions_motif ON inscriptions(motif);
 CREATE INDEX IF NOT EXISTS idx_inscriptions_date ON inscriptions(date_inscription DESC);
 
--- 7. Table des visites du site (Analytics & Fréquentation)
+-- 7. Table des visites du site (Analytics, Fréquentation & Géolocalisation)
 CREATE TABLE IF NOT EXISTS site_visits (
     id SERIAL PRIMARY KEY,
     visitor_id VARCHAR(64) NOT NULL,
@@ -89,12 +89,20 @@ CREATE TABLE IF NOT EXISTS site_visits (
     browser VARCHAR(50) DEFAULT 'Autre',
     os VARCHAR(50) DEFAULT 'Autre',
     screen_resolution VARCHAR(30),
+    ip_address VARCHAR(45),
+    country VARCHAR(100),
+    country_code VARCHAR(10),
+    city VARCHAR(100),
+    region VARCHAR(100),
+    timezone VARCHAR(100),
     visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_visits_date ON site_visits(visited_at DESC);
 CREATE INDEX IF NOT EXISTS idx_visits_visitor ON site_visits(visitor_id);
 CREATE INDEX IF NOT EXISTS idx_visits_page ON site_visits(page_url);
+CREATE INDEX IF NOT EXISTS idx_visits_country ON site_visits(country);
+CREATE INDEX IF NOT EXISTS idx_visits_city ON site_visits(city);
 
 -- 8. Table des clics et interactions du site
 CREATE TABLE IF NOT EXISTS site_clicks (

@@ -14,6 +14,8 @@ import io
 import datetime
 import sys
 import os
+import json
+import urllib.request
 
 sys.path.insert(0, os.path.dirname(__file__))
 from config import DB_CONFIG, DATABASE_URL
@@ -22,6 +24,116 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 app = Flask(__name__, static_folder=BASE_DIR, static_url_path='')
 CORS(app)
+
+# ─────────────────────────────────────────────
+# GÉOLOCALISATION IP (ANALYTICS & STATISTIQUES)
+# ─────────────────────────────────────────────
+GEO_IP_CACHE = {}
+
+TIMEZONE_GEO_FALLBACK = {
+    'Africa/Abidjan': {'country': "Côte d'Ivoire", 'country_code': 'CI', 'city': 'Abidjan / Bouaké', 'region': 'Gbêkê / Lagunes'},
+    'Africa/Dakar': {'country': 'Sénégal', 'country_code': 'SN', 'city': 'Dakar', 'region': 'Dakar'},
+    'Africa/Bamako': {'country': 'Mali', 'country_code': 'ML', 'city': 'Bamako', 'region': 'Bamako'},
+    'Africa/Ouagadougou': {'country': 'Burkina Faso', 'country_code': 'BF', 'city': 'Ouagadougou', 'region': 'Centre'},
+    'Africa/Lome': {'country': 'Togo', 'country_code': 'TG', 'city': 'Lomé', 'region': 'Maritime'},
+    'Africa/Cotonou': {'country': 'Bénin', 'country_code': 'BJ', 'city': 'Cotonou', 'region': 'Littoral'},
+    'Africa/Accra': {'country': 'Ghana', 'country_code': 'GH', 'city': 'Accra', 'region': 'Greater Accra'},
+    'Africa/Lagos': {'country': 'Nigéria', 'country_code': 'NG', 'city': 'Lagos', 'region': 'Lagos'},
+    'Africa/Douala': {'country': 'Cameroun', 'country_code': 'CM', 'city': 'Douala', 'region': 'Littoral'},
+    'Africa/Kinshasa': {'country': 'RD Congo', 'country_code': 'CD', 'city': 'Kinshasa', 'region': 'Kinshasa'},
+    'Africa/Casablanca': {'country': 'Maroc', 'country_code': 'MA', 'city': 'Casablanca', 'region': 'Casablanca-Settat'},
+    'Africa/Tunis': {'country': 'Tunisie', 'country_code': 'TN', 'city': 'Tunis', 'region': 'Tunis'},
+    'Africa/Algiers': {'country': 'Algérie', 'country_code': 'DZ', 'city': 'Alger', 'region': 'Alger'},
+    'Europe/Paris': {'country': 'France', 'country_code': 'FR', 'city': 'Paris', 'region': 'Île-de-France'},
+    'Europe/Brussels': {'country': 'Belgique', 'country_code': 'BE', 'city': 'Bruxelles', 'region': 'Bruxelles'},
+    'Europe/Geneva': {'country': 'Suisse', 'country_code': 'CH', 'city': 'Genève', 'region': 'Genève'},
+    'Europe/Zurich': {'country': 'Suisse', 'country_code': 'CH', 'city': 'Zurich', 'region': 'Zurich'},
+    'Europe/London': {'country': 'Royaume-Uni', 'country_code': 'GB', 'city': 'Londres', 'region': 'England'},
+    'Europe/Madrid': {'country': 'Espagne', 'country_code': 'ES', 'city': 'Madrid', 'region': 'Madrid'},
+    'Europe/Rome': {'country': 'Italie', 'country_code': 'IT', 'city': 'Rome', 'region': 'Lazio'},
+    'Europe/Berlin': {'country': 'Allemagne', 'country_code': 'DE', 'city': 'Berlin', 'region': 'Berlin'},
+    'America/New_York': {'country': 'États-Unis', 'country_code': 'US', 'city': 'New York', 'region': 'New York'},
+    'America/Chicago': {'country': 'États-Unis', 'country_code': 'US', 'city': 'Chicago', 'region': 'Illinois'},
+    'America/Los_Angeles': {'country': 'États-Unis', 'country_code': 'US', 'city': 'Los Angeles', 'region': 'California'},
+    'America/Montreal': {'country': 'Canada', 'country_code': 'CA', 'city': 'Montréal', 'region': 'Québec'},
+    'America/Toronto': {'country': 'Canada', 'country_code': 'CA', 'city': 'Toronto', 'region': 'Ontario'},
+}
+
+def is_private_ip(ip):
+    if not ip or ip in ('127.0.0.1', '::1', 'localhost', '0.0.0.0'):
+        return True
+    if ip.startswith(('10.', '192.168.', '172.16.', '172.17.', '172.18.', '172.19.', '172.20.', '172.21.', '172.22.', '172.23.', '172.24.', '172.25.', '172.26.', '172.27.', '172.28.', '172.29.', '172.30.', '172.31.', 'fc00:', 'fe80:')):
+        return True
+    return False
+
+def get_client_ip():
+    headers = [
+        'CF-Connecting-IP',
+        'X-Forwarded-For',
+        'X-Real-IP'
+    ]
+    for h in headers:
+        val = request.headers.get(h)
+        if val:
+            ip = val.split(',')[0].strip()
+            if ip:
+                return ip
+    return (request.remote_addr or '').strip()
+
+def resolve_geoip(ip, client_tz=''):
+    geo = {
+        'country': '',
+        'country_code': '',
+        'city': '',
+        'region': '',
+        'timezone': client_tz or ''
+    }
+    
+    if is_private_ip(ip):
+        if client_tz and client_tz in TIMEZONE_GEO_FALLBACK:
+            fb = TIMEZONE_GEO_FALLBACK[client_tz]
+            geo['country'] = fb['country']
+            geo['country_code'] = fb['country_code']
+            geo['city'] = fb['city']
+            geo['region'] = fb['region']
+        elif client_tz and '/' in client_tz:
+            geo['country'] = client_tz.split('/')[0].replace('_', ' ')
+            geo['city'] = client_tz.split('/')[1].replace('_', ' ')
+        return geo
+
+    if ip in GEO_IP_CACHE:
+        return GEO_IP_CACHE[ip]
+
+    try:
+        url = f"http://ip-api.com/json/{ip}?fields=status,message,country,countryCode,regionName,city,timezone"
+        req = urllib.request.Request(url, headers={'User-Agent': 'ACTERE-Analytics/1.0'})
+        with urllib.request.urlopen(req, timeout=1.5) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            if data.get('status') == 'success':
+                geo['country'] = data.get('country') or ''
+                geo['country_code'] = data.get('countryCode') or ''
+                geo['city'] = data.get('city') or ''
+                geo['region'] = data.get('regionName') or ''
+                if not geo['timezone']:
+                    geo['timezone'] = data.get('timezone') or ''
+                GEO_IP_CACHE[ip] = geo
+                return geo
+    except Exception as e:
+        print(f"[GEOIP WARNING] Erreur résolution IP {ip} : {e}")
+
+    # Fallback sur le timezone client si l'API externe échoue
+    if client_tz and client_tz in TIMEZONE_GEO_FALLBACK:
+        fb = TIMEZONE_GEO_FALLBACK[client_tz]
+        geo['country'] = fb['country']
+        geo['country_code'] = fb['country_code']
+        geo['city'] = fb['city']
+        geo['region'] = fb['region']
+    elif client_tz and '/' in client_tz:
+        geo['country'] = client_tz.split('/')[0].replace('_', ' ')
+        geo['city'] = client_tz.split('/')[1].replace('_', ' ')
+
+    GEO_IP_CACHE[ip] = geo
+    return geo
 
 # ─────────────────────────────────────────────
 # ROUTAGE & SÉCURISATION DES URLS ADMIN
@@ -125,7 +237,7 @@ def init_db():
     cur.execute("CREATE INDEX IF NOT EXISTS idx_contact_created ON contact_messages(created_at DESC)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_contact_status ON contact_messages(status)")
 
-    # 3. Table des visites du site (Analytics / Trafic)
+    # 3. Table des visites du site (Analytics / Trafic & Géolocalisation)
     cur.execute("""
         CREATE TABLE IF NOT EXISTS site_visits (
             id SERIAL PRIMARY KEY,
@@ -138,12 +250,28 @@ def init_db():
             browser VARCHAR(50) DEFAULT 'Autre',
             os VARCHAR(50) DEFAULT 'Autre',
             screen_resolution VARCHAR(30),
+            ip_address VARCHAR(45),
+            country VARCHAR(100),
+            country_code VARCHAR(10),
+            city VARCHAR(100),
+            region VARCHAR(100),
+            timezone VARCHAR(100),
             visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
     cur.execute("CREATE INDEX IF NOT EXISTS idx_visits_date ON site_visits(visited_at DESC)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_visits_visitor ON site_visits(visitor_id)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_visits_page ON site_visits(page_url)")
+
+    # Migrations de colonnes de géolocalisation si la table existait déjà
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS ip_address VARCHAR(45)")
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS country VARCHAR(100)")
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS country_code VARCHAR(10)")
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS city VARCHAR(100)")
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS region VARCHAR(100)")
+    cur.execute("ALTER TABLE site_visits ADD COLUMN IF NOT EXISTS timezone VARCHAR(100)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_visits_country ON site_visits(country)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_visits_city ON site_visits(city)")
 
     # 4. Table des clics et interactions du site
     cur.execute("""
@@ -570,21 +698,30 @@ def track_visit():
     browser = (data.get('browser') or 'Autre').strip()[:50]
     os_name = (data.get('os') or 'Autre').strip()[:50]
     screen_resolution = (data.get('screen_resolution') or '').strip()[:30]
+    client_tz = (data.get('timezone') or '').strip()[:100]
+
+    client_ip = get_client_ip()[:45]
+    geo = resolve_geoip(client_ip, client_tz)
 
     try:
         conn = get_db()
         cur = conn.cursor()
         cur.execute("""
             INSERT INTO site_visits 
-            (visitor_id, session_id, page_url, page_title, referrer, device_type, browser, os, screen_resolution)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            (visitor_id, session_id, page_url, page_title, referrer, device_type, browser, os, screen_resolution, ip_address, country, country_code, city, region, timezone)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id
-        """, (visitor_id, session_id, page_url, page_title, referrer, device_type, browser, os_name, screen_resolution))
+        """, (
+            visitor_id, session_id, page_url, page_title, referrer,
+            device_type, browser, os_name, screen_resolution,
+            client_ip, geo.get('country') or '', geo.get('country_code') or '',
+            geo.get('city') or '', geo.get('region') or '', geo.get('timezone') or client_tz
+        ))
         visit_id = cur.fetchone()[0]
         conn.commit()
         cur.close()
         conn.close()
-        return jsonify({'success': True, 'visit_id': visit_id}), 201
+        return jsonify({'success': True, 'visit_id': visit_id, 'geo': geo}), 201
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
 
@@ -713,12 +850,41 @@ def get_analytics_stats():
         """)
         browsers = [dict(r) for r in cur.fetchall()]
 
-        # 8. Visites récentes (dernières 15)
+        # 8. Répartition Géographique (Top Pays & Top Villes)
         cur.execute("""
-            SELECT id, page_url, page_title, device_type, browser, os, visited_at
+            SELECT 
+                COALESCE(NULLIF(country, ''), 'Non spécifié') as country,
+                COALESCE(NULLIF(country_code, ''), '') as country_code,
+                COUNT(*) as visits,
+                COUNT(DISTINCT visitor_id) as unique_visitors
+            FROM site_visits
+            WHERE country IS NOT NULL AND country != ''
+            GROUP BY country, country_code
+            ORDER BY visits DESC
+            LIMIT 10
+        """)
+        countries = [dict(r) for r in cur.fetchall()]
+
+        cur.execute("""
+            SELECT 
+                city,
+                COALESCE(NULLIF(country, ''), 'Non spécifié') as country,
+                COALESCE(NULLIF(country_code, ''), '') as country_code,
+                COUNT(*) as visits
+            FROM site_visits
+            WHERE city IS NOT NULL AND city != ''
+            GROUP BY city, country, country_code
+            ORDER BY visits DESC
+            LIMIT 10
+        """)
+        cities = [dict(r) for r in cur.fetchall()]
+
+        # 9. Visites récentes (dernières 20)
+        cur.execute("""
+            SELECT id, page_url, page_title, device_type, browser, os, ip_address, country, country_code, city, region, visited_at
             FROM site_visits
             ORDER BY visited_at DESC
-            LIMIT 15
+            LIMIT 20
         """)
         recent_visits_raw = cur.fetchall()
         recent_visits = []
@@ -739,6 +905,8 @@ def get_analytics_stats():
             'top_clicks': top_clicks,
             'devices': devices,
             'browsers': browsers,
+            'countries': countries,
+            'cities': cities,
             'recent_visits': recent_visits
         })
     except Exception as e:
@@ -884,6 +1052,44 @@ def export_analytics_excel():
 
         for i, w in enumerate([8, 35, 14, 25, 18], 1):
             ws3.column_dimensions[get_column_letter(i)].width = w
+
+        # ─── ONGLET 4 : LOCALISATION GÉOGRAPHIQUE ───
+        ws4 = wb.create_sheet(title="Géolocalisation")
+        ws4.merge_cells('A1:D1')
+        t4 = ws4['A1']
+        t4.value = "ACT'ERE - Répartition Géographique des Visiteurs"
+        t4.font = Font(name='Calibri', bold=True, size=15, color=white)
+        t4.fill = title_fill
+        t4.alignment = Alignment(horizontal='center', vertical='center')
+        ws4.row_dimensions[1].height = 32
+
+        headers4 = ['Rang', 'Pays / Territoire', 'Code Pays', 'Nombre de Visites']
+        for col, h in enumerate(headers4, 1):
+            c = ws4.cell(row=3, column=col, value=h)
+            c.font = Font(name='Calibri', bold=True, size=11, color=white)
+            c.fill = header_fill
+            c.alignment = Alignment(horizontal='center', vertical='center')
+
+        cur.execute("""
+            SELECT COALESCE(NULLIF(country, ''), 'Non spécifié') as country,
+                   COALESCE(NULLIF(country_code, ''), '') as country_code,
+                   COUNT(*) as visits
+            FROM site_visits
+            GROUP BY country, country_code
+            ORDER BY visits DESC
+        """)
+        geo_rows = cur.fetchall()
+        for idx, row in enumerate(geo_rows, 4):
+            bg = grey_row if idx % 2 == 0 else white
+            vals = [idx - 3, row['country'], row['country_code'], row['visits']]
+            for col, val in enumerate(vals, 1):
+                cell = ws4.cell(row=idx, column=col, value=val)
+                cell.fill = PatternFill("solid", fgColor=bg)
+                cell.border = thin_border
+                cell.alignment = Alignment(horizontal='left' if col == 2 else 'center', vertical='center')
+
+        for i, w in enumerate([8, 30, 15, 20], 1):
+            ws4.column_dimensions[get_column_letter(i)].width = w
 
         cur.close()
         conn.close()

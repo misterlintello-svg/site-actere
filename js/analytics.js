@@ -103,6 +103,10 @@
             : '';
 
         const pageUrl = window.location.pathname.split('/').pop() || 'index.html';
+        const tz = (window.Intl && typeof Intl.DateTimeFormat === 'function')
+            ? (Intl.DateTimeFormat().resolvedOptions().timeZone || '')
+            : '';
+        const lang = navigator.language || navigator.userLanguage || '';
 
         const payload = {
             visitor_id: getVisitorId(),
@@ -113,7 +117,9 @@
             device_type: getDeviceType(),
             browser: getBrowserName(),
             os: getOSName(),
-            screen_resolution: screenRes
+            screen_resolution: screenRes,
+            timezone: tz,
+            language: lang
         };
 
         sendPayload('/api/analytics/visit', payload);
