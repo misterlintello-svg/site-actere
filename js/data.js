@@ -257,6 +257,42 @@ const ActereData = {
             photo: "team-placeholder-2.svg",
             linkedin: "#",
             twitter: "#"
+        },
+        {
+            id: 9,
+            name: "[Nom & Prénom]",
+            role: "[Poste / Fonction au Bureau]",
+            bio: "[Renseignez ici la description, les missions et le parcours de ce membre du bureau...]",
+            photo: "team-placeholder-1.svg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 10,
+            name: "[Nom & Prénom]",
+            role: "[Poste / Fonction au Bureau]",
+            bio: "[Renseignez ici la description, les missions et le parcours de ce membre du bureau...]",
+            photo: "team-placeholder-2.svg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 11,
+            name: "[Nom & Prénom]",
+            role: "[Poste / Fonction au Bureau]",
+            bio: "[Renseignez ici la description, les missions et le parcours de ce membre du bureau...]",
+            photo: "team-placeholder-1.svg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 12,
+            name: "[Nom & Prénom]",
+            role: "[Poste / Fonction au Bureau]",
+            bio: "[Renseignez ici la description, les missions et le parcours de ce membre du bureau...]",
+            photo: "team-placeholder-2.svg",
+            linkedin: "#",
+            twitter: "#"
         }
     ],
 
