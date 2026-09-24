@@ -197,51 +197,6 @@ const ActereData = {
         },
         {
             id: 2,
-            name: "AIKPON Gbetho Basilid Fidele",
-            role: "Secrétaire Général & Coordination",
-            bio: "Secrétaire général de l'ONG Act'ère, il coordonne les activités de terrain et assure la liaison entre les équipes, les partenaires et les communautés.",
-            photo: "SgPic.jpeg",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 3,
-            name: "TOURE Maïmouna Nadia",
-            role: "Partenariat & Sponsoring",
-            bio: "Chargée de la communication et des partenariats, elle développe les relations avec les sponsors et institutions pour soutenir nos projets.",
-            photo: "CompartPic.jpeg",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 4,
-            name: "SORO Gninimegnan Irène",
-            role: "Préservation Faune & Flore",
-            bio: "Responsable des actions pour la préservation de la faune et de la flore, elle encadre et coordonne les activités sur le terrain.",
-            photo: "RespoapffPic.jpeg",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 5,
-            name: "HAIDARA Issa",
-            role: "Commission Thématique",
-            bio: "Responsable de la commission thématique, il est chargé de l'évaluation scientifique des projets et de la mesure de l'impact environnemental.",
-            photo: "Respocothïc.jpeg",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 6,
-            name: "KANGAH Roland Yane Trésor",
-            role: "Communication & Relations Extérieures",
-            bio: "Responsable chargé de la communication et des relations extérieures, il assure la visibilité et la diplomatie publique de l'ONG.",
-            photo: "RespocomPic.jpeg",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 7,
             name: "COULIBALY Ahmed Ibrahima",
             role: "Vice-Président",
             bio: "Vice-président de l'ONG ACT'ERE, contribuant aux orientations stratégiques et au rayonnement de l'organisation.",
@@ -250,7 +205,7 @@ const ActereData = {
             twitter: "#"
         },
         {
-            id: 8,
+            id: 3,
             name: "KANATE Mariam",
             role: "2ème Vice-Présidente",
             bio: "2ème vice-présidente de l'ONG ACT'ERE, chargée des projets et des formations.",
@@ -259,7 +214,16 @@ const ActereData = {
             twitter: "#"
         },
         {
-            id: 9,
+            id: 4,
+            name: "AIKPON Gbetho Basilid Fidele",
+            role: "Secrétaire Général & Coordination",
+            bio: "Secrétaire général de l'ONG Act'ère, il coordonne les activités de terrain et assure la liaison entre les équipes, les partenaires et les communautés.",
+            photo: "SgPic.jpeg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 5,
             name: "TAHI Océane Gina",
             role: "Trésorière Générale",
             bio: "Trésorière générale de l'ONG ACT'ERE, chargée de la gestion financière et comptable de l'organisation.",
@@ -268,7 +232,7 @@ const ActereData = {
             twitter: "#"
         },
         {
-            id: 10,
+            id: 6,
             name: "KOUADIO Amenan Grâce Manuela",
             role: "Commissaire aux Comptes",
             bio: "Commissaire aux comptes de l'ONG ACT'ERE, chargée de l'audit financier et de la vérification des états comptables.",
@@ -277,11 +241,47 @@ const ActereData = {
             twitter: "#"
         },
         {
-            id: 11,
+            id: 7,
+            name: "TOURE Maïmouna Nadia",
+            role: "Partenariat & Sponsoring",
+            bio: "Chargée de la communication et des partenariats, elle développe les relations avec les sponsors et institutions pour soutenir nos projets.",
+            photo: "CompartPic.jpeg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 8,
+            name: "SORO Gninimegnan Irène",
+            role: "Préservation Faune & Flore",
+            bio: "Responsable des actions pour la préservation de la faune et de la flore, elle encadre et coordonne les activités sur le terrain.",
+            photo: "RespoapffPic.jpeg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 9,
+            name: "HAIDARA Issa",
+            role: "Commission Thématique",
+            bio: "Responsable de la commission thématique, il est chargé de l'évaluation scientifique des projets et de la mesure de l'impact environnemental.",
+            photo: "Respocothïc.jpeg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 10,
             name: "KOUAME Naomi Néri",
             role: "Commission Thématique (Adjointe)",
             bio: "Responsable adjointe de la commission thématique, dédiée à la promotion de l'égalité des genres et à la lutte contre les discriminations.",
             photo: "RacthPic.jpeg",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 11,
+            name: "KANGAH Roland Yane Trésor",
+            role: "Communication & Relations Extérieures",
+            bio: "Responsable chargé de la communication et des relations extérieures, il assure la visibilité et la diplomatie publique de l'ONG.",
+            photo: "RespocomPic.jpeg",
             linkedin: "#",
             twitter: "#"
         }
