@@ -263,7 +263,7 @@ const ActereData = {
             name: "HAIDARA Issa",
             role: "Commission Thématique",
             bio: "Responsable de la commission thématique, il est chargé de l'évaluation scientifique des projets et de la mesure de l'impact environnemental.",
-            photo: "Respocothïc.jpeg",
+            photo: "RespoComthPic.jpeg",
             linkedin: "#",
             twitter: "#"
         },

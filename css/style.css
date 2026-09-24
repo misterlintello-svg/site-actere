@@ -1462,20 +1462,26 @@ button, input, textarea, select {
 }
 
 .team-avatar {
-    height: 280px;
+    height: 320px;
     overflow: hidden;
     position: relative;
+    background: #eef3ef;
+}
+
+[data-theme="dark"] .team-avatar {
+    background: #0d2214;
 }
 
 .team-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top center;
     transition: transform 0.5s ease;
 }
 
 .team-card:hover .team-avatar img {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .team-details {
