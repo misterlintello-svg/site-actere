@@ -559,8 +559,7 @@ function initThemeToggle() {
 }
 
 /* ─── 9. GESTION DU MODAL DE BIOGRAPHIE DES MEMBRES DU BUREAU ─── */
-function initMemberBioModals() {
-    // Création dynamique du modal s'il n'existe pas déjà dans le DOM
+function ensureMemberBioModalElement() {
     let bioModal = document.getElementById('member-bio-modal');
     if (!bioModal) {
         bioModal = document.createElement('div');
@@ -605,64 +604,72 @@ function initMemberBioModals() {
             </div>
         `;
         document.body.appendChild(bioModal);
+
+        bioModal.addEventListener('click', (e) => {
+            if (e.target === bioModal) {
+                window.closeMemberBioModal();
+            }
+        });
+    }
+    return bioModal;
+}
+
+window.openMemberBioModal = function(memberId) {
+    const bioModal = ensureMemberBioModalElement();
+    const team = (window.ActereData && ActereData.team) ? ActereData.team : [];
+    const member = team.find(m => m.id === parseInt(memberId, 10) || String(m.id) === String(memberId));
+    if (!member) return;
+
+    const imgEl = document.getElementById('bio-modal-img');
+    const poleEl = document.getElementById('bio-modal-pole');
+    const nameEl = document.getElementById('bio-modal-name');
+    const roleEl = document.getElementById('bio-modal-role');
+    const quoteEl = document.getElementById('bio-modal-quote');
+    const quoteWrap = document.getElementById('bio-modal-quote-wrap');
+    const textEl = document.getElementById('bio-modal-text');
+    const skillsEl = document.getElementById('bio-modal-skills');
+
+    if (imgEl) imgEl.src = member.photo || 'prPic.jpeg';
+    if (poleEl) poleEl.textContent = member.pole || 'Pôle Exécutif';
+    if (nameEl) nameEl.textContent = member.name || 'Membre ACT\'ERE';
+    if (roleEl) roleEl.textContent = member.role || 'Responsable';
+    
+    if (quoteEl && member.quote) {
+        quoteEl.textContent = `« ${member.quote} »`;
+        if (quoteWrap) quoteWrap.style.display = 'block';
+    } else if (quoteWrap) {
+        quoteWrap.style.display = 'none';
     }
 
-    window.openMemberBioModal = function(memberId) {
-        const team = (window.ActereData && ActereData.team) ? ActereData.team : [];
-        const member = team.find(m => m.id === parseInt(memberId, 10) || String(m.id) === String(memberId));
-        if (!member) return;
+    if (textEl) {
+        textEl.textContent = member.fullBio || member.bio || 'Membre engagé au sein de l\'ONG ACT\'ERE pour la protection de l\'environnement.';
+    }
 
-        const imgEl = document.getElementById('bio-modal-img');
-        const poleEl = document.getElementById('bio-modal-pole');
-        const nameEl = document.getElementById('bio-modal-name');
-        const roleEl = document.getElementById('bio-modal-role');
-        const quoteEl = document.getElementById('bio-modal-quote');
-        const quoteWrap = document.getElementById('bio-modal-quote-wrap');
-        const textEl = document.getElementById('bio-modal-text');
-        const skillsEl = document.getElementById('bio-modal-skills');
-
-        if (imgEl) imgEl.src = member.photo || 'prPic.jpeg';
-        if (poleEl) poleEl.textContent = member.pole || 'Pôle Exécutif';
-        if (nameEl) nameEl.textContent = member.name || 'Membre ACT\'ERE';
-        if (roleEl) roleEl.textContent = member.role || 'Responsable';
-        
-        if (quoteEl && member.quote) {
-            quoteEl.textContent = `« ${member.quote} »`;
-            if (quoteWrap) quoteWrap.style.display = 'block';
-        } else if (quoteWrap) {
-            quoteWrap.style.display = 'none';
+    if (skillsEl) {
+        if (member.skills && member.skills.length > 0) {
+            skillsEl.innerHTML = member.skills.map(s => `<span class="bio-skill-item">${escapeHtmlText(s)}</span>`).join('');
+            skillsEl.style.display = 'flex';
+        } else {
+            skillsEl.style.display = 'none';
         }
+    }
 
-        if (textEl) {
-            textEl.textContent = member.fullBio || member.bio || 'Membre engagé au sein de l\'ONG ACT\'ERE pour la protection de l\'environnement.';
-        }
+    bioModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
 
-        if (skillsEl) {
-            if (member.skills && member.skills.length > 0) {
-                skillsEl.innerHTML = member.skills.map(s => `<span class="bio-skill-item">${escapeHtmlText(s)}</span>`).join('');
-                skillsEl.style.display = 'flex';
-            } else {
-                skillsEl.style.display = 'none';
-            }
-        }
+window.closeMemberBioModal = function() {
+    const bioModal = document.getElementById('member-bio-modal');
+    if (bioModal) bioModal.classList.remove('open');
+    document.body.style.overflow = '';
+};
 
-        bioModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.closeMemberBioModal = function() {
-        if (bioModal) bioModal.classList.remove('open');
-        document.body.style.overflow = '';
-    };
-
-    bioModal.addEventListener('click', (e) => {
-        if (e.target === bioModal) {
-            window.closeMemberBioModal();
-        }
-    });
+function initMemberBioModals() {
+    ensureMemberBioModalElement();
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && bioModal.classList.contains('open')) {
+        const bioModal = document.getElementById('member-bio-modal');
+        if (e.key === 'Escape' && bioModal && bioModal.classList.contains('open')) {
             window.closeMemberBioModal();
         }
     });
@@ -671,6 +678,7 @@ function initMemberBioModals() {
     document.querySelectorAll('[data-member-id]').forEach(el => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             const id = el.getAttribute('data-member-id');
             window.openMemberBioModal(id);
         });

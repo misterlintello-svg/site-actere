@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 
     <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=2.5">
 
     <!-- Dark Mode Pré-initialisation pour éviter le clignotement -->
     <script>
@@ -368,7 +368,7 @@
             <!-- Grille complète des membres du Bureau -->
             <div class="projects-grid" id="full-team-container">
                 <!-- Membre 1 : Direction & Présidence -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="1">
+                <div class="team-card-detailed team-card-clickable" data-member-id="1" onclick="window.openMemberBioModal && window.openMemberBioModal(1)">
                     <div class="team-card-media">
                         <img src="prPic.jpeg" alt="Messamory TRAORE">
                     </div>
@@ -383,14 +383,14 @@
                             <span class="skill-badge">Énergies Propres</span>
                             <span class="skill-badge">Plaidoyer</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="1">
+                        <button type="button" class="btn-bio-trigger" data-member-id="1" onclick="window.openMemberBioModal && window.openMemberBioModal(1)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 2 : Direction & Présidence -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="2">
+                <div class="team-card-detailed team-card-clickable" data-member-id="2" onclick="window.openMemberBioModal && window.openMemberBioModal(2)">
                     <div class="team-card-media">
                         <img src="VicprPic.jpeg" alt="COULIBALY Ahmed Ibrahima">
                     </div>
@@ -405,14 +405,14 @@
                             <span class="skill-badge">Coordination</span>
                             <span class="skill-badge">Stratégie</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="2">
+                        <button type="button" class="btn-bio-trigger" data-member-id="2" onclick="window.openMemberBioModal && window.openMemberBioModal(2)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 3 : Direction & Présidence -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="3">
+                <div class="team-card-detailed team-card-clickable" data-member-id="3" onclick="window.openMemberBioModal && window.openMemberBioModal(3)">
                     <div class="team-card-media">
                         <img src="ViceprPic.jpeg" alt="KANATE Mariam">
                     </div>
@@ -427,14 +427,14 @@
                             <span class="skill-badge">Pédagogie</span>
                             <span class="skill-badge">Jeunesse</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="3">
+                        <button type="button" class="btn-bio-trigger" data-member-id="3" onclick="window.openMemberBioModal && window.openMemberBioModal(3)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 4 : Secrétariat Général -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="4">
+                <div class="team-card-detailed team-card-clickable" data-member-id="4" onclick="window.openMemberBioModal && window.openMemberBioModal(4)">
                     <div class="team-card-media">
                         <img src="SgPic.jpeg" alt="AIKPON Gbetho Basilid Fidele">
                     </div>
@@ -449,14 +449,14 @@
                             <span class="skill-badge">Coordination</span>
                             <span class="skill-badge">Logistique</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="4">
+                        <button type="button" class="btn-bio-trigger" data-member-id="4" onclick="window.openMemberBioModal && window.openMemberBioModal(4)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 5 : Trésorerie Générale -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="5">
+                <div class="team-card-detailed team-card-clickable" data-member-id="5" onclick="window.openMemberBioModal && window.openMemberBioModal(5)">
                     <div class="team-card-media">
                         <img src="TrgPic.jpeg" alt="TAHI Océane Gina">
                     </div>
@@ -471,14 +471,14 @@
                             <span class="skill-badge">Comptabilité</span>
                             <span class="skill-badge">Budget</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="5">
+                        <button type="button" class="btn-bio-trigger" data-member-id="5" onclick="window.openMemberBioModal && window.openMemberBioModal(5)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 6 : Commissariat aux Comptes -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="6">
+                <div class="team-card-detailed team-card-clickable" data-member-id="6" onclick="window.openMemberBioModal && window.openMemberBioModal(6)">
                     <div class="team-card-media">
                         <img src="CcPic.jpeg" alt="KOUADIO Amenan Grâce Manuela">
                     </div>
@@ -493,14 +493,14 @@
                             <span class="skill-badge">Conformité</span>
                             <span class="skill-badge">Contrôle</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="6">
+                        <button type="button" class="btn-bio-trigger" data-member-id="6" onclick="window.openMemberBioModal && window.openMemberBioModal(6)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 7 : Partenariat & Sponsoring -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="7">
+                <div class="team-card-detailed team-card-clickable" data-member-id="7" onclick="window.openMemberBioModal && window.openMemberBioModal(7)">
                     <div class="team-card-media">
                         <img src="CompartPic.jpeg" alt="TOURE Maïmouna Nadia">
                     </div>
@@ -515,14 +515,14 @@
                             <span class="skill-badge">Relations RSE</span>
                             <span class="skill-badge">Levée de Fonds</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="7">
+                        <button type="button" class="btn-bio-trigger" data-member-id="7" onclick="window.openMemberBioModal && window.openMemberBioModal(7)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 8 : Action Environnementale -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="8">
+                <div class="team-card-detailed team-card-clickable" data-member-id="8" onclick="window.openMemberBioModal && window.openMemberBioModal(8)">
                     <div class="team-card-media">
                         <img src="RespoapffPic.jpeg" alt="SORO Gninimegnan Irène">
                     </div>
@@ -537,14 +537,14 @@
                             <span class="skill-badge">Reboisement</span>
                             <span class="skill-badge">Terrain</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="8">
+                        <button type="button" class="btn-bio-trigger" data-member-id="8" onclick="window.openMemberBioModal && window.openMemberBioModal(8)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 9 : Commission Thématique -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="9">
+                <div class="team-card-detailed team-card-clickable" data-member-id="9" onclick="window.openMemberBioModal && window.openMemberBioModal(9)">
                     <div class="team-card-media">
                         <img src="RespocothPic.jpeg" alt="HAIDARA Issa">
                     </div>
@@ -559,14 +559,14 @@
                             <span class="skill-badge">Bilan Carbone</span>
                             <span class="skill-badge">Écologie</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="9">
+                        <button type="button" class="btn-bio-trigger" data-member-id="9" onclick="window.openMemberBioModal && window.openMemberBioModal(9)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 10 : Commission Thématique (Adjointe) -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="10">
+                <div class="team-card-detailed team-card-clickable" data-member-id="10" onclick="window.openMemberBioModal && window.openMemberBioModal(10)">
                     <div class="team-card-media">
                         <img src="RacthPic.jpeg" alt="KOUAME Naomi Néri">
                     </div>
@@ -581,14 +581,14 @@
                             <span class="skill-badge">Inclusion Sociale</span>
                             <span class="skill-badge">Droits Humains</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="10">
+                        <button type="button" class="btn-bio-trigger" data-member-id="10" onclick="window.openMemberBioModal && window.openMemberBioModal(10)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
                 </div>
 
                 <!-- Membre 11 : Communication & Relations Extérieures -->
-                <div class="team-card-detailed team-card-clickable" data-member-id="11">
+                <div class="team-card-detailed team-card-clickable" data-member-id="11" onclick="window.openMemberBioModal && window.openMemberBioModal(11)">
                     <div class="team-card-media">
                         <img src="RespocomPic.jpeg" alt="KANGAH Roland Yane Trésor">
                     </div>
@@ -603,7 +603,7 @@
                             <span class="skill-badge">Médias</span>
                             <span class="skill-badge">Relations Presse</span>
                         </div>
-                        <button type="button" class="btn-bio-trigger" data-member-id="11">
+                        <button type="button" class="btn-bio-trigger" data-member-id="11" onclick="window.openMemberBioModal && window.openMemberBioModal(11)">
                             <span>Lire la biographie</span> <span class="btn-arrow">→</span>
                         </button>
                     </div>
@@ -765,8 +765,8 @@
     </footer>
 
     <!-- Scripts JavaScript -->
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/data.js?v=2.5"></script>
+    <script src="js/main.js?v=2.5"></script>
     <script src="js/analytics.js"></script>
 </body>
 </html>
