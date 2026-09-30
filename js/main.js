@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initSmoothScrollAndActiveNav();
     initArticlesLoader();
+    initMemberBioModals();
+    initVolunteersPage();
+    initGalleryPage();
 });
 
 /* --- 0. SLIDER DU HERO HEADER (MULTI-VOLETS) --- */
@@ -554,4 +557,330 @@ function initThemeToggle() {
         });
     });
 }
+
+/* ─── 9. GESTION DU MODAL DE BIOGRAPHIE DES MEMBRES DU BUREAU ─── */
+function initMemberBioModals() {
+    // Création dynamique du modal s'il n'existe pas déjà dans le DOM
+    let bioModal = document.getElementById('member-bio-modal');
+    if (!bioModal) {
+        bioModal = document.createElement('div');
+        bioModal.id = 'member-bio-modal';
+        bioModal.className = 'bio-modal-backdrop';
+        bioModal.setAttribute('role', 'dialog');
+        bioModal.setAttribute('aria-modal', 'true');
+        bioModal.innerHTML = `
+            <div class="bio-modal-card">
+                <button type="button" class="bio-modal-close-btn" aria-label="Fermer la biographie" onclick="window.closeMemberBioModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+                <div class="bio-modal-header">
+                    <div class="bio-modal-avatar">
+                        <img id="bio-modal-img" src="prPic.jpeg" alt="Membre du bureau">
+                    </div>
+                    <div class="bio-modal-title-wrap">
+                        <span id="bio-modal-pole" class="bio-modal-pole">Direction</span>
+                        <h2 id="bio-modal-name" class="bio-modal-name">Nom du Membre</h2>
+                        <span id="bio-modal-role" class="bio-modal-role">Rôle Officiel</span>
+                    </div>
+                </div>
+                <div class="bio-modal-body">
+                    <div id="bio-modal-quote-wrap" class="bio-quote-box">
+                        <span id="bio-modal-quote">« Citation inspirante »</span>
+                    </div>
+                    <div class="bio-section-heading">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Parcours & Rôle au sein d'ACT'ERE
+                    </div>
+                    <div id="bio-modal-text" class="bio-text-content">
+                        Biographie complète du membre...
+                    </div>
+                    <div class="bio-section-heading">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                        Domaines d'Expertise & Compétences
+                    </div>
+                    <div id="bio-modal-skills" class="bio-skills-tags">
+                        <!-- Badges générés dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(bioModal);
+    }
+
+    window.openMemberBioModal = function(memberId) {
+        const team = (window.ActereData && ActereData.team) ? ActereData.team : [];
+        const member = team.find(m => m.id === parseInt(memberId, 10) || String(m.id) === String(memberId));
+        if (!member) return;
+
+        const imgEl = document.getElementById('bio-modal-img');
+        const poleEl = document.getElementById('bio-modal-pole');
+        const nameEl = document.getElementById('bio-modal-name');
+        const roleEl = document.getElementById('bio-modal-role');
+        const quoteEl = document.getElementById('bio-modal-quote');
+        const quoteWrap = document.getElementById('bio-modal-quote-wrap');
+        const textEl = document.getElementById('bio-modal-text');
+        const skillsEl = document.getElementById('bio-modal-skills');
+
+        if (imgEl) imgEl.src = member.photo || 'prPic.jpeg';
+        if (poleEl) poleEl.textContent = member.pole || 'Pôle Exécutif';
+        if (nameEl) nameEl.textContent = member.name || 'Membre ACT\'ERE';
+        if (roleEl) roleEl.textContent = member.role || 'Responsable';
+        
+        if (quoteEl && member.quote) {
+            quoteEl.textContent = `« ${member.quote} »`;
+            if (quoteWrap) quoteWrap.style.display = 'block';
+        } else if (quoteWrap) {
+            quoteWrap.style.display = 'none';
+        }
+
+        if (textEl) {
+            textEl.textContent = member.fullBio || member.bio || 'Membre engagé au sein de l\'ONG ACT\'ERE pour la protection de l\'environnement.';
+        }
+
+        if (skillsEl) {
+            if (member.skills && member.skills.length > 0) {
+                skillsEl.innerHTML = member.skills.map(s => `<span class="bio-skill-item">${escapeHtmlText(s)}</span>`).join('');
+                skillsEl.style.display = 'flex';
+            } else {
+                skillsEl.style.display = 'none';
+            }
+        }
+
+        bioModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeMemberBioModal = function() {
+        if (bioModal) bioModal.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    bioModal.addEventListener('click', (e) => {
+        if (e.target === bioModal) {
+            window.closeMemberBioModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && bioModal.classList.contains('open')) {
+            window.closeMemberBioModal();
+        }
+    });
+
+    // Attachement des écouteurs sur tous les éléments porteurs de data-member-id
+    document.querySelectorAll('[data-member-id]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = el.getAttribute('data-member-id');
+            window.openMemberBioModal(id);
+        });
+    });
+}
+
+/* ─── 10. GESTION DE LA PAGE BÉNÉVOLES ─── */
+function initVolunteersPage() {
+    const container = document.getElementById('volunteers-container');
+    const filterButtons = document.querySelectorAll('.volunteers-filter-bar button');
+
+    if (!container) return;
+
+    const volunteers = (window.ActereData && ActereData.volunteers) ? ActereData.volunteers : [];
+    if (!volunteers.length) return;
+
+    const renderVolunteers = (filterCategory = 'all') => {
+        const filtered = filterCategory === 'all'
+            ? volunteers
+            : volunteers.filter(v => v.category === filterCategory);
+
+        container.innerHTML = filtered.map(v => {
+            const missionsHtml = v.missions
+                ? v.missions.map(m => `
+                    <div class="volunteer-mission-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>${escapeHtmlText(m)}</span>
+                    </div>
+                `).join('')
+                : '';
+
+            return `
+                <div class="volunteer-card">
+                    <div class="volunteer-avatar-circle" style="background: ${v.avatarColor || '#52B75A'};">
+                        ${escapeHtmlText(v.initials || 'VO')}
+                    </div>
+                    <h3 class="volunteer-name">${escapeHtmlText(v.name)}</h3>
+                    <div>
+                        <span class="volunteer-pole-badge">${escapeHtmlText(v.pole)}</span>
+                    </div>
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.8rem;">
+                        📍 ${escapeHtmlText(v.location)} • <span style="color:var(--primary-green); font-weight:600;">Depuis ${escapeHtmlText(v.joinedDate)}</span>
+                    </div>
+                    <p class="volunteer-quote">« ${escapeHtmlText(v.quote)} »</p>
+                    <div class="volunteer-missions-list">
+                        ${missionsHtml}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    };
+
+    // Rendu initial
+    renderVolunteers('all');
+
+    // Gestion du filtrage par boutons
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const category = btn.getAttribute('data-filter') || 'all';
+            renderVolunteers(category);
+        });
+    });
+}
+
+/* ─── 11. GESTION DE LA GALERIE PHOTO & LIGHTBOX ─── */
+let currentLightboxIndex = 0;
+let activeGalleryItems = [];
+
+function initGalleryPage() {
+    const galleryContainer = document.getElementById('gallery-container');
+    const filterButtons = document.querySelectorAll('.gallery-filter-bar button');
+
+    if (!galleryContainer) return;
+
+    const galleryData = (window.ActereData && ActereData.gallery) ? ActereData.gallery : [];
+    if (!galleryData.length) return;
+
+    activeGalleryItems = [...galleryData];
+
+    const renderGallery = (filterCat = 'all') => {
+        activeGalleryItems = filterCat === 'all'
+            ? galleryData
+            : galleryData.filter(item => item.category === filterCat);
+
+        galleryContainer.innerHTML = activeGalleryItems.map((item, index) => {
+            return `
+                <div class="gallery-card" onclick="window.openLightbox(${index})">
+                    <div class="gallery-thumb-wrap">
+                        <img src="${item.image}" alt="${escapeHtmlText(item.title)}" loading="lazy" onerror="this.src='hero-bg.jpg'">
+                        <div class="gallery-zoom-overlay">
+                            <div class="gallery-zoom-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-card-body">
+                        <span class="gallery-tag">${escapeHtmlText(item.categoryLabel || 'Activité')}</span>
+                        <h3 class="gallery-card-title">${escapeHtmlText(item.title)}</h3>
+                        <p class="gallery-card-desc">${escapeHtmlText(item.description)}</p>
+                        <div class="gallery-card-meta">
+                            <span>📍 ${escapeHtmlText(item.location)}</span>
+                            <span>🗓️ ${escapeHtmlText(item.date)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    };
+
+    renderGallery('all');
+
+    // Filtrage
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.getAttribute('data-filter') || 'all';
+            renderGallery(cat);
+        });
+    });
+
+    // Lightbox Modal Setup
+    let lightbox = document.getElementById('gallery-lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'gallery-lightbox';
+        lightbox.className = 'lightbox-modal';
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        lightbox.innerHTML = `
+            <div class="lightbox-container">
+                <button type="button" class="lightbox-close-btn" aria-label="Fermer la vue photo" onclick="window.closeLightbox()">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+                <button type="button" class="lightbox-nav-btn lightbox-prev" aria-label="Photo précédente" onclick="window.prevLightbox(event)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="lightbox-nav-btn lightbox-next" aria-label="Photo suivante" onclick="window.nextLightbox(event)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+                <div class="lightbox-image-wrap">
+                    <img id="lightbox-img" src="" alt="Photo agrandie">
+                </div>
+                <div class="lightbox-info">
+                    <h3 id="lightbox-title" class="lightbox-title">Titre de l'activité</h3>
+                    <p id="lightbox-desc" class="lightbox-desc">Description de l'action terrain...</p>
+                    <div id="lightbox-meta" class="lightbox-meta">Lieu • Date</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+    }
+
+    const updateLightboxContent = () => {
+        if (!activeGalleryItems.length) return;
+        const item = activeGalleryItems[currentLightboxIndex];
+        if (!item) return;
+
+        const img = document.getElementById('lightbox-img');
+        const title = document.getElementById('lightbox-title');
+        const desc = document.getElementById('lightbox-desc');
+        const meta = document.getElementById('lightbox-meta');
+
+        if (img) {
+            img.src = item.image;
+            img.alt = item.title;
+        }
+        if (title) title.textContent = item.title;
+        if (desc) desc.textContent = item.description;
+        if (meta) meta.textContent = `📍 ${item.location}  •  🗓️ Année ${item.date}  •  🏷️ ${item.categoryLabel || 'Action'}`;
+    };
+
+    window.openLightbox = function(index) {
+        currentLightboxIndex = index;
+        updateLightboxContent();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeLightbox = function() {
+        if (lightbox) lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    window.prevLightbox = function(e) {
+        if (e) e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex - 1 + activeGalleryItems.length) % activeGalleryItems.length;
+        updateLightboxContent();
+    };
+
+    window.nextLightbox = function(e) {
+        if (e) e.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex + 1) % activeGalleryItems.length;
+        updateLightboxContent();
+    };
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-container')) {
+            window.closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') window.closeLightbox();
+        if (e.key === 'ArrowLeft') window.prevLightbox();
+        if (e.key === 'ArrowRight') window.nextLightbox();
+    });
+}
+
 
