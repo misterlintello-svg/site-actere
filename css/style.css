@@ -16,6 +16,7 @@
     --dark-forest: #0D2818;
     --forest-accent: #143823;
     --dark-surface: #0a1c11;
+    --text-dark: #0D2818;
     --text-main: #1A2A1E;
     --text-muted: #5A6E60;
     --text-light: #F4F7F4;
@@ -41,8 +42,10 @@
 [data-theme="dark"] {
     --bg-white: #08140B;
     --bg-light: #0D1E12;
+    --text-dark: #FFFFFF;
     --text-main: #E5EFE7;
     --text-muted: #A3BAAA;
+    --dark-forest: #E5EFE7;
     --border-color: #173721;
     --card-border: rgba(82, 183, 90, 0.25);
     --light-green-bg: #122B1A;
@@ -75,6 +78,9 @@
 /* Cartes & Conteneurs */
 [data-theme="dark"] .pillar-card,
 [data-theme="dark"] .project-card,
+[data-theme="dark"] .project-vertical-item,
+[data-theme="dark"] .proj-item-card,
+[data-theme="dark"] .proj-full-card,
 [data-theme="dark"] .article-card,
 [data-theme="dark"] .impact-card,
 [data-theme="dark"] .team-card,
@@ -94,6 +100,7 @@
 
 [data-theme="dark"] .pillar-card:hover,
 [data-theme="dark"] .project-card:hover,
+[data-theme="dark"] .project-vertical-item:hover,
 [data-theme="dark"] .article-card:hover,
 [data-theme="dark"] .team-card:hover,
 [data-theme="dark"] .team-card-detailed:hover,
@@ -107,10 +114,12 @@
 /* Titres & Typographie */
 [data-theme="dark"] .pillar-title,
 [data-theme="dark"] .project-title,
+[data-theme="dark"] .proj-item-title,
 [data-theme="dark"] .article-title,
 [data-theme="dark"] .team-name,
 [data-theme="dark"] .team-card-name,
 [data-theme="dark"] .section-title,
+[data-theme="dark"] .initiatives-title,
 [data-theme="dark"] .contact-form-title,
 [data-theme="dark"] .action-card h3,
 [data-theme="dark"] .highlight-item h4,
@@ -122,6 +131,7 @@
 
 [data-theme="dark"] .section-description,
 [data-theme="dark"] .project-description,
+[data-theme="dark"] .proj-item-desc,
 [data-theme="dark"] .article-excerpt,
 [data-theme="dark"] .team-bio,
 [data-theme="dark"] .about-text,
@@ -130,6 +140,26 @@
 [data-theme="dark"] .highlight-item p,
 [data-theme="dark"] .director-statement,
 [data-theme="dark"] .footer-desc {
+    color: #A6BFAD !important;
+}
+
+[data-theme="dark"] .proj-tag-pill,
+[data-theme="dark"] .project-badge-tag {
+    background: rgba(13, 30, 18, 0.92) !important;
+    color: #64D770 !important;
+    border: 1px solid rgba(82, 183, 90, 0.3) !important;
+}
+
+[data-theme="dark"] .stay-inspired-card {
+    background: #0F2A17 !important;
+    border-color: #1C482A !important;
+}
+
+[data-theme="dark"] .stay-inspired-title {
+    color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .stay-inspired-desc {
     color: #A6BFAD !important;
 }
 

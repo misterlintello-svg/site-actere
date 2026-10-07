@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
 
     <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="css/style.css?v=2.6">
+    <link rel="stylesheet" href="css/style.css?v=2.7">
 
     <!-- Dark Mode Pré-initialisation pour éviter le clignotement -->
     <script>
@@ -75,9 +75,45 @@
             color: #ffffff !important;
             border-color: var(--primary-green) !important;
         }
-        [data-theme="dark"] .proj-item-card {
+        [data-theme="dark"] .proj-item-card,
+        [data-theme="dark"] .project-vertical-item {
             background: #0F2315 !important;
             border-color: #1A3E25 !important;
+        }
+        [data-theme="dark"] .project-vertical-item:hover {
+            border-color: rgba(82, 183, 90, 0.5) !important;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(82, 183, 90, 0.15) !important;
+        }
+        [data-theme="dark"] .proj-item-title {
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .proj-item-desc {
+            color: #A6BFAD !important;
+        }
+        [data-theme="dark"] .proj-tag-pill {
+            background: rgba(13, 30, 18, 0.92) !important;
+            color: #64D770 !important;
+            border: 1px solid rgba(82, 183, 90, 0.3) !important;
+        }
+        [data-theme="dark"] .stay-inspired-card {
+            background: #0F2A17 !important;
+            border-color: #1C482A !important;
+        }
+        [data-theme="dark"] .stay-inspired-title {
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .stay-inspired-desc {
+            color: #A6BFAD !important;
+        }
+        [data-theme="dark"] .initiatives-section {
+            background: #08140B !important;
+        }
+        [data-theme="dark"] .initiatives-header-wrap h2,
+        [data-theme="dark"] .initiatives-title {
+            color: #FFFFFF !important;
+        }
+        [data-theme="dark"] .initiatives-desc {
+            color: #A6BFAD !important;
         }
         [data-theme="dark"] .showcase-icon-btn {
             background: #142F1C !important;
