@@ -11,9 +11,9 @@ Lorsque l'utilisateur envoie l'instruction **`VERIFIES LES COMMANDES`** (ou tout
 * Vérifier le bon chargement des pages clés :
   - `index.html` (Hero, sections, compteurs, valeurs)
   - `projets.html` (Catalogue et filtrage)
-  - `equipe.html` (Trombinoscope, rôles et biographies modales)
+  - `equipe.html` (Trombinoscope, pôles et rôles sans biographies)
   - `actualites.html` (Articles dynamiques)
-  - `benevoles.html` & `galerie.html`
+  - `galerie.html` (Galerie photo et reportages)
   - `contact.html` (Formulaire & Google Maps Bouaké)
 * Vérifier les interactions : bascule Dark Mode (persistance `localStorage`), soumission asynchrone des formulaires d'inscriptions et de contact, tracking analytics silencieux (`js/analytics.js`).
 
