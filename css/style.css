@@ -2888,6 +2888,28 @@ body.modal-open {
     border-color: #173721;
 }
 
+.gallery-card-meta .meta-item,
+.lightbox-meta .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.meta-icon {
+    flex-shrink: 0;
+    color: var(--primary-green);
+}
+
+.lightbox-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+}
+
+.lightbox-meta .meta-icon {
+    color: var(--accent-green);
+}
+
 /* ─── LIGHTBOX MODAL DE LA GALERIE ─── */
 .lightbox-modal {
     position: fixed;

@@ -557,6 +557,10 @@ function initThemeToggle() {
 }
 
 /* ─── 9. GESTION DE LA GALERIE PHOTO & LIGHTBOX ─── */
+const ICON_MAP_PIN = '<svg class="meta-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
+const ICON_CALENDAR = '<svg class="meta-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>';
+const ICON_TAG = '<svg class="meta-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>';
+
 let currentLightboxIndex = 0;
 let activeGalleryItems = [];
 
@@ -592,8 +596,8 @@ function initGalleryPage() {
                         <h3 class="gallery-card-title">${escapeHtmlText(item.title)}</h3>
                         <p class="gallery-card-desc">${escapeHtmlText(item.description)}</p>
                         <div class="gallery-card-meta">
-                            <span>📍 ${escapeHtmlText(item.location)}</span>
-                            <span>🗓️ ${escapeHtmlText(item.date)}</span>
+                            <span class="meta-item">${ICON_MAP_PIN}${escapeHtmlText(item.location)}</span>
+                            <span class="meta-item">${ICON_CALENDAR}${escapeHtmlText(item.date)}</span>
                         </div>
                     </div>
                 </div>
@@ -661,7 +665,13 @@ function initGalleryPage() {
         }
         if (title) title.textContent = item.title;
         if (desc) desc.textContent = item.description;
-        if (meta) meta.textContent = `📍 ${item.location}  •  🗓️ Année ${item.date}  •  🏷️ ${item.categoryLabel || 'Action'}`;
+        if (meta) {
+            meta.innerHTML = `
+                <span class="meta-item">${ICON_MAP_PIN}${escapeHtmlText(item.location)}</span>
+                <span class="meta-item">${ICON_CALENDAR}Année ${escapeHtmlText(item.date)}</span>
+                <span class="meta-item">${ICON_TAG}${escapeHtmlText(item.categoryLabel || 'Action')}</span>
+            `;
+        }
     };
 
     window.openLightbox = function(index) {
