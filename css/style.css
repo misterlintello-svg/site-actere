@@ -2619,6 +2619,20 @@ body.modal-open {
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-btn-pill .filter-icon {
+    flex-shrink: 0;
+    color: var(--primary-green);
+    transition: color 0.2s ease;
+}
+
+.filter-btn-pill:hover .filter-icon,
+.filter-btn-pill.active .filter-icon {
+    color: #ffffff;
 }
 
 .filter-btn-pill:hover,
